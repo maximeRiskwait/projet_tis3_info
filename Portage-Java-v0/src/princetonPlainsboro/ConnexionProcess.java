@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package princetonPlainsboro;
-
-import javax.swing.JLabel;
+ 
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,31 +18,42 @@ public class ConnexionProcess {
     private String login;
     private String password;
     private boolean success;
+    
+    public ConnexionProcess(JTextField login, JPasswordField password){
+        
+        this.login = login.getText().toUpperCase(); 
+        this.password = new String(password.getPassword()); 
+        this.success=false; 
+        
+    }
      
     
-    public boolean connexionReussie (JLabel labelLog, JLabel labelPass){  
+    public boolean connexionReussie (){  
         
-        this.login = labelLog.getText().toUpperCase(); 
-        this.password = labelPass.getText(); 
         this.success=false; 
+        JOptionPane jop1 = new JOptionPane(); 
         
         switch(login){
             case "SECRETAIREMED":
                 if(password.equals("SMED135")){
                     success = true; 
-                }
-                // ajouter un else avec un popup qui s'ouvre pour dire que c'est pas bon
+                } 
+                
                 break; 
             case "MEDECIN": 
                 if(password.equals("Medecin123")){
                     success = true; 
                 }
+                
                 break; 
             case "SECRETAIREADM":
                 if(password.equals("SAdmin369")){
                     success = true; 
-                }
+                } 
                 break; 
+            default :
+                jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
+                            "ERREUR", JOptionPane.ERROR_MESSAGE);
             
         }
         

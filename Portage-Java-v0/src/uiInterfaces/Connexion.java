@@ -5,6 +5,9 @@
  */
 package uiInterfaces;
 
+import javax.swing.JOptionPane;
+import princetonPlainsboro.ConnexionProcess;
+
 /**
  *
  * @author melin
@@ -51,6 +54,11 @@ public class Connexion extends javax.swing.JFrame {
         jLabel2.setText("Mot de Passe");
 
         jButton2.setText("Se connecter");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Bienvenue! Veuillez-vous connecter!");
 
@@ -118,6 +126,19 @@ public class Connexion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ConnexionProcess cp = new ConnexionProcess(login, password);
+        JOptionPane jop1 = new JOptionPane();
+        if (cp.connexionReussie() == true) {
+            System.out.println("Connexion Réussie");
+            this.dispose();
+        } else {
+            jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
+                    "ERREUR", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,6 +170,7 @@ public class Connexion extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Connexion("Connexion CHU Princeton-Plainsboro").setVisible(true);
+
             }
         });
     }
