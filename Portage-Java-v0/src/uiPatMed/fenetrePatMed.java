@@ -30,22 +30,28 @@ public class fenetrePatMed extends javax.swing.JFrame {
         ongletPatMed = new javax.swing.JTabbedPane();
         ongletPatient = new javax.swing.JPanel();
         spPat = new javax.swing.JScrollPane();
-        listePatient = new javax.swing.JList<>();
+        tablePat = new javax.swing.JTable();
         recherchePat = new javax.swing.JTextField();
         ongletMedecin = new javax.swing.JPanel();
         spMed = new javax.swing.JScrollPane();
-        listeMedecin = new javax.swing.JList<>();
+        tableMed = new javax.swing.JTable();
         rechercheMed = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Médical");
 
-        listePatient.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Patient 1 ", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6", "Patient 7", "Patient 8", "Patient 9", "Patient 10" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        spPat.setViewportView(listePatient);
+        tablePat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"SMITH", "Will", "30/03/2007"},
+                {"GAGA", "Lady", "09/08/2000"},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "NOM", "Prenom", "Date de naissance"
+            }
+        ));
+        spPat.setViewportView(tablePat);
 
         recherchePat.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         recherchePat.setText("Rechercher un patient");
@@ -58,9 +64,9 @@ public class fenetrePatMed extends javax.swing.JFrame {
                 .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ongletPatientLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(spPat))
+                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
                     .addGroup(ongletPatientLayout.createSequentialGroup()
-                        .addGap(0, 395, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -76,12 +82,18 @@ public class fenetrePatMed extends javax.swing.JFrame {
 
         ongletPatMed.addTab("Patient", ongletPatient);
 
-        listeMedecin.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Médecin 1", "Médecin 2", "Médecin 3", "Médecin 1", "Médecin 2", "Médecin 3", "Médecin 1", "Médecin 2", "Médecin 3", "Médecin 1", "Médecin 2", "Médecin 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        spMed.setViewportView(listeMedecin);
+        tableMed.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Dujardin", "Jean ", "Cardio"},
+                {"Tel", "Sophie", "Neuro"},
+                {"Chirac", "Jacque", "Uro"},
+                {null, null, null}
+            },
+            new String [] {
+                "NOM", "Prénom", "Spécialité"
+            }
+        ));
+        spMed.setViewportView(tableMed);
 
         rechercheMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         rechercheMed.setText("Rechercher un medecin");
@@ -98,9 +110,9 @@ public class fenetrePatMed extends javax.swing.JFrame {
             .addGroup(ongletMedecinLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMed)
+                    .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletMedecinLayout.createSequentialGroup()
-                        .addGap(0, 389, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -172,8 +184,6 @@ public class fenetrePatMed extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> listeMedecin;
-    private javax.swing.JList<String> listePatient;
     private javax.swing.JPanel ongletMedecin;
     private javax.swing.JTabbedPane ongletPatMed;
     private javax.swing.JPanel ongletPatient;
@@ -181,5 +191,7 @@ public class fenetrePatMed extends javax.swing.JFrame {
     private javax.swing.JTextField recherchePat;
     private javax.swing.JScrollPane spMed;
     private javax.swing.JScrollPane spPat;
+    private javax.swing.JTable tableMed;
+    private javax.swing.JTable tablePat;
     // End of variables declaration//GEN-END:variables
 }
