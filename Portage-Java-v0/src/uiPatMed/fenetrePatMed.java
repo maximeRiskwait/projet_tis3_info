@@ -31,7 +31,6 @@ public class fenetrePatMed extends javax.swing.JFrame {
         ongletPatient = new javax.swing.JPanel();
         spPat = new javax.swing.JScrollPane();
         listePatient = new javax.swing.JList<>();
-        addNewPatient = new javax.swing.JButton();
         recherchePat = new javax.swing.JTextField();
         ongletMedecin = new javax.swing.JPanel();
         spMed = new javax.swing.JScrollPane();
@@ -48,13 +47,6 @@ public class fenetrePatMed extends javax.swing.JFrame {
         });
         spPat.setViewportView(listePatient);
 
-        addNewPatient.setText("Nouveau Patient");
-        addNewPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewPatientActionPerformed(evt);
-            }
-        });
-
         recherchePat.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         recherchePat.setText("Rechercher un patient");
 
@@ -68,8 +60,7 @@ public class fenetrePatMed extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(spPat))
                     .addGroup(ongletPatientLayout.createSequentialGroup()
-                        .addComponent(addNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                        .addGap(0, 395, Short.MAX_VALUE)
                         .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -79,10 +70,8 @@ public class fenetrePatMed extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(spPat, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addNewPatient)
-                    .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         ongletPatMed.addTab("Patient", ongletPatient);
@@ -143,10 +132,6 @@ public class fenetrePatMed extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addNewPatientActionPerformed
-
     private void rechercheMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheMedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rechercheMedActionPerformed
@@ -187,7 +172,6 @@ public class fenetrePatMed extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addNewPatient;
     private javax.swing.JList<String> listeMedecin;
     private javax.swing.JList<String> listePatient;
     private javax.swing.JPanel ongletMedecin;
