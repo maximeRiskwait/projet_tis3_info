@@ -59,9 +59,9 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="dataNom" linkSize="1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="dataPrenom" linkSize="1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -73,12 +73,12 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField4" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateDateNaissance" linkSize="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField5" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dataNumTel" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField6" linkSize="1" min="-2" pref="185" max="-2" attributes="0"/>
+                              <Component id="dataNumSecu" linkSize="1" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -100,8 +100,8 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateDateNaissance" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -110,8 +110,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataNumTel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -121,7 +121,7 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataNumSecu" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -139,14 +139,14 @@
             <Property name="text" type="java.lang.String" value="Nom:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="dataNom">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pr&#xe9;nom:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="dataPrenom">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -158,21 +158,21 @@
             <Property name="text" type="java.lang.String" value="Date de naissance:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="dateDateNaissance">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Num&#xe9;ro de t&#xe9;l&#xe9;phone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="dataNumTel">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Num&#xe9;ro Sociale:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="dataNumSecu">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
@@ -198,6 +198,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Annuler"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="annulerActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -5,6 +5,8 @@
  */
 package uiFichesDeSoins;
 
+import princetonPlainsboro.Patient; 
+
 /**
  *
  * @author melin
@@ -69,6 +71,11 @@ public class FicheDeSoins extends javax.swing.JFrame {
         labDate.setText("Date:");
 
         valider.setText("Valider");
+        valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerActionPerformed(evt);
+            }
+        });
 
         annuler.setText("Annuler");
         annuler.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +201,10 @@ public class FicheDeSoins extends javax.swing.JFrame {
     private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_annulerActionPerformed
+
+    private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_validerActionPerformed
 
     /**
      * @param args the command line arguments

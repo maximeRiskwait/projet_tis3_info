@@ -1,16 +1,27 @@
 package princetonPlainsboro;
 
-class Patient {
+public class Patient {
 
     private String nom;
     private String prenom;
     private Date dateDeNaissance;
-    private String Adresse;
+    private String adresse;
     private String numSecuSociale;
+    private String numTel; 
 
     public Patient(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
+    }
+    
+    public Patient(String nom, String prenom, Date dateNaissance,String num, String adresse, String numSecu){
+        this.nom= nom; 
+        this.prenom = prenom; 
+        this.dateDeNaissance = dateNaissance; 
+        this.numTel = num; 
+        this.adresse = adresse; 
+        this.numSecuSociale = numSecu; 
+        
     }
 
     public String toString() {
