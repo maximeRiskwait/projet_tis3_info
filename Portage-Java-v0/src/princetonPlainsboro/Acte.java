@@ -3,6 +3,11 @@ package princetonPlainsboro;
 class Acte {
     private Code code;
     private int coef;
+    private String nomActe; 
+    private String nomMedecin; 
+    private Date dateRéalisation; 
+    private String type; 
+    private String observation; 
     
     public Acte(Code code, int coef) {
         this.code = code;

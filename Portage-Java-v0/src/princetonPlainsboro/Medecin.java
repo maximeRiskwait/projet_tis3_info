@@ -4,6 +4,8 @@ class Medecin {
     private String nom;
     private String prenom;
     private String specialite;
+    private String numTel; 
+    //Mot de passe pour acceder au systeme
     
     public Medecin(String nom, String prenom, String specialite) {
         this.nom = nom;
