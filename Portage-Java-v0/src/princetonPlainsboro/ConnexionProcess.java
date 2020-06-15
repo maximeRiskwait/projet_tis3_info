@@ -17,16 +17,6 @@ public class ConnexionProcess {
     private String password;
     private boolean success;
      
-
-    /*public ConnexionProcess(JLabel labelLog, JLabel labelPass) {
-
-        this.login = labelLog.getText(); 
-        this.password = labelPass.getText(); 
-        this.success=false; 
-        
-        
-        
-    }*/
     
     public boolean connexionReussie (JLabel labelLog, JLabel labelPass){  
         
