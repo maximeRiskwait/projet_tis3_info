@@ -4,10 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Code.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Acte.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Medecin.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/uiConnexion/Connexion.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/DossierMedical.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/uiFichePatient/FichePatient.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Date.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Patient.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/uiFichesDeSoins/FicheDeSoins.java</file>
         </group>
     </open-files>
 </project-private>

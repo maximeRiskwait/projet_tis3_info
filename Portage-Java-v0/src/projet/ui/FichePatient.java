@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiFichePatient;
+package projet.ui;
 
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.Date; 
+import princetonPlainsboro.ListePatient; 
 /**
  *
  * @author melin
@@ -175,8 +176,11 @@ public class FichePatient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
+        ListePatient lp = new ListePatient(); 
         try {
-            creerPatient();
+            lp.ajouterPatient(creerPatient());
+            System.out.println("Patient ajouté");
+            this.dispose();
         } catch (NullPointerException e) {
             System.out.println("Un ou plusieurs des champs sont vide. Veuillez tous les remplir");
             // Mettre un JOptionPane en cas d'erreur
@@ -234,7 +238,7 @@ public class FichePatient extends javax.swing.JFrame {
         String numSecu = dataNumSecu.getText(); 
         
         Patient p = new Patient(nom, prenom, dateNaissance, num, adresse, numSecu);
-        //ajouter le patient a la liste de patient  
+        
         return p;
            
     }
