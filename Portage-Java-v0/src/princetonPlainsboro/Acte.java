@@ -5,7 +5,7 @@ class Acte {
     private int coef;
     private String nomActe; 
     private String nomMedecin; 
-    private Date dateRéalisation; 
+    private Date dateRealisation; 
     private String type; 
     private String observation; 
     
@@ -53,8 +53,8 @@ class Acte {
     /**
      * @return the dateRéalisation
      */
-    public Date getDateRéalisation() {
-        return dateRéalisation;
+    public Date getDateRealisation() {
+        return dateRealisation;
     }
 
     /**
