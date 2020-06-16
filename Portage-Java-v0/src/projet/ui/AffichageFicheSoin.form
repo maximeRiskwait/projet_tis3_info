@@ -253,7 +253,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="labComMedecin1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Commentaire du m&#xe9;decin :"/>
+            <Property name="text" type="java.lang.String" value="Date :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">

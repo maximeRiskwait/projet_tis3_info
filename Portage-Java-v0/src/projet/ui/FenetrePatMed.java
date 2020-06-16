@@ -5,17 +5,44 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import princetonPlainsboro.DossierMedical; 
+import princetonPlainsboro.Medecin;
+import princetonPlainsboro.Patient;
 /**
  *
  * @author maximeriskwait
  */
 public class FenetrePatMed extends javax.swing.JFrame {
 
+    private ArrayList<Patient> liste_patient;
+    private ArrayList<Medecin> liste_medecin; 
+    private DossierMedical dm; 
     /**
      * Creates new form fenetrePatMed
      */
-    public FenetrePatMed() {
+    public FenetrePatMed(DossierMedical dm, ArrayList<Patient> listePat, ArrayList<Medecin> liste_medecin) {
         initComponents();
+        
+        this.liste_patient = listePat;
+        this.liste_medecin = liste_medecin; 
+        this.dm = dm; 
+        
+        int nbrligne = liste_patient.size();
+        
+        int k = 0;
+        Object  [][] data = new Object[nbrligne][9];
+        for (int i = 0; i < liste_patient.size(); i++) {
+            data[k][0] = liste_patient.get(i).getNom();
+            data[k][1] = liste_patient.get(i).getPrenom();
+            data[k][2] = liste_patient.get(i).getDateDeNaissance().toString();
+            data[k][3] = liste_patient.get(i).getAdresse();
+            data[k][4] = liste_patient.get(i).getNumTel();
+            data[k][5] = liste_patient.get(i).getNumSecuSociale();
+            
+        }
+        tablePat.setModel(new DefaultTableModel(data, liste_patient.size()));
     }
 
     /**
@@ -42,15 +69,23 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
         tablePat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"SMITH", "Will", "30/03/2007"},
-                {"GAGA", "Lady", "09/08/2000"},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "NOM", "Prenom", "Date de naissance"
+                "Nom", "Prenom", "Date Naissance", "Adresse", "Numéro tel", "NuméroSS"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         spPat.setViewportView(tablePat);
 
         recherchePat.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
@@ -64,7 +99,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ongletPatientLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
+                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
                     .addGroup(ongletPatientLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -84,9 +119,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
         tableMed.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Dujardin", "Jean ", "Cardio"},
-                {"Tel", "Sophie", "Neuro"},
-                {"Chirac", "Jacque", "Uro"},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -110,7 +143,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
             .addGroup(ongletMedecinLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                    .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletMedecinLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))

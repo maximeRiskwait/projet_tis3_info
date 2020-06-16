@@ -34,7 +34,7 @@ public class Patient {
      * @return the numSecuSociale
      */
     public String getNumSecuSociale() {
-        return numSecuSociale;
+        return numSS;
     }
 
     /**
@@ -48,7 +48,7 @@ public class Patient {
     private String prenom;
     private Date dateDeNaissance;
     private String adresse;
-    private String numSecuSociale;
+    private String numSS;
     private String numTel; 
 
     public Patient(String nom, String prenom) {
@@ -62,7 +62,7 @@ public class Patient {
         this.dateDeNaissance = dateNaissance; 
         this.numTel = num; 
         this.adresse = adresse; 
-        this.numSecuSociale = numSecu; 
+        this.numSS = numSecu; 
         
     }
 
@@ -83,5 +83,19 @@ public class Patient {
         } else {
             return false;
         }
+    }
+
+    /**
+     * @return the numSS
+     */
+    public String getNumSS() {
+        return numSS;
+    }
+
+    /**
+     * @param numSS the numSS to set
+     */
+    public void setNumSS(String numSS) {
+        this.numSS = numSS;
     }
 }

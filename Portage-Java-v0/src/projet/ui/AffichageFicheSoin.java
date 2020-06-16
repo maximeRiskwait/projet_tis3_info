@@ -84,7 +84,7 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         textMedecin.setRows(5);
         jScrollPane3.setViewportView(textMedecin);
 
-        labComMedecin1.setText("Commentaire du médecin :");
+        labComMedecin1.setText("Date :");
 
         jLabel1.setText("18/04/2020");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());

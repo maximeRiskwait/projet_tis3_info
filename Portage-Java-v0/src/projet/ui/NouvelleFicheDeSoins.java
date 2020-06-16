@@ -11,12 +11,12 @@ import princetonPlainsboro.Patient;
  *
  * @author melin
  */
-public class FicheDeSoins extends javax.swing.JFrame {
+public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
     /**
      * Creates new form FicheDeSoins
      */
-    public FicheDeSoins(String title) {
+    public NouvelleFicheDeSoins(String title) {
         super(title);
         initComponents();
         this.setSize(650,450);
@@ -223,20 +223,21 @@ public class FicheDeSoins extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FicheDeSoins("Nouvelle fiche de soin").setVisible(true);
+                new NouvelleFicheDeSoins("Nouvelle fiche de soin").setVisible(true);
             }
         });
     }
