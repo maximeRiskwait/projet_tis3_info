@@ -1,7 +1,7 @@
 package princetonPlainsboro;
 
 class Acte {
-    private Code code;      //test de commit :)
+    private Code code;      
     private int coef;
     private String nomActe; 
     private String nomMedecin; 

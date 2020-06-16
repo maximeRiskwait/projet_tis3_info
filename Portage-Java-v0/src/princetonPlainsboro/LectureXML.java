@@ -42,6 +42,10 @@ public class LectureXML {
         String donneesCourantes = "";
         String nomCourant = "";
         String prenomCourant = "";
+        Date dateNaissanceCourant = null; 
+        String adresseCourant = ""; 
+        String numTelCourant = ""; 
+        String numeroSSCourant = ""; 
         String specialiteCourante = "";
         Code codeCourant = null;
         int coefCourant = 0;
@@ -95,12 +99,31 @@ public class LectureXML {
                         }
                         if (parser.getLocalName().equals("medecin")) {
                             medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante);
+                            dossierCourant.ajouterMedecin(medecinCourant);
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
                         }
+                        if (parser.getLocalName().equals("dateNaissance")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-')+1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-')+1, donneesCourantes.length()));
+                            
+                            dateNaissanceCourant = new Date(jour, mois, annee);
+                        }
+                        if (parser.getLocalName().equals("adresse")) {
+                            adresseCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("numTel")) {
+                            numTelCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("numSS")) {
+                            numeroSSCourant = donneesCourantes;
+                        }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant);
+                            patientCourant = new Patient(nomCourant, prenomCourant, dateNaissanceCourant,
+                                    adresseCourant, numTelCourant, numeroSSCourant);
+                            dossierCourant.ajouterPatient(patientCourant);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;

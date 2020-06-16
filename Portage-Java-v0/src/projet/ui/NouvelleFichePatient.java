@@ -9,7 +9,6 @@ import princetonPlainsboro.Patient;
 import princetonPlainsboro.Date; 
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.LectureXML;
-import princetonPlainsboro.ListePatient; 
 /**
  *
  * @author melin

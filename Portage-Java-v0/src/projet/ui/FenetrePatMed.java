@@ -16,9 +16,9 @@ import princetonPlainsboro.Patient;
  */
 public class FenetrePatMed extends javax.swing.JFrame {
 
-    private ArrayList<Patient> liste_patient;
-    private ArrayList<Medecin> liste_medecin; 
+    private ArrayList<Patient> liste_patient; 
     private DossierMedical dm; 
+    private String[] liste; 
     /**
      * Creates new form fenetrePatMed
      */
@@ -27,21 +27,30 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         this.liste_patient = listePat; 
         this.dm = dm; 
+        this.liste = new String[6]; 
+       
         
-        int nbrligne = liste_patient.size();
+        this.liste[0] = "Nom";
+        this.liste[1] = "Prénom"; 
+        this.liste[2] = "Date de naissance"; 
+        this.liste[3] = "Adresse"; 
+        this.liste[4] = "Numéro tel"; 
+        this.liste[5] = "Numéro SS"; 
         
         int k = 0;
-        Object  [][] data = new Object[nbrligne][9];
+        Object  [][] data = new Object[this.liste_patient.size()][6];
         for (int i = 0; i < liste_patient.size(); i++) {
-            data[k][0] = liste_patient.get(i).getNom();
-            data[k][1] = liste_patient.get(i).getPrenom();
-            data[k][2] = liste_patient.get(i).getDateDeNaissance().toString();
-            data[k][3] = liste_patient.get(i).getAdresse();
-            data[k][4] = liste_patient.get(i).getNumTel();
-            data[k][5] = liste_patient.get(i).getNumSecuSociale();
+            data[i][0] = liste_patient.get(i).getNom();
+            data[i][1] = liste_patient.get(i).getPrenom();
+            data[i][2] = liste_patient.get(i).getDateDeNaissance().toString();
+            data[i][3] = liste_patient.get(i).getAdresse();
+            data[i][4] = liste_patient.get(i).getNumTel();
+            data[i][5] = liste_patient.get(i).getNumSecuSociale();
             
         }
-        tablePat.setModel(new DefaultTableModel(data, liste_patient.size()));
+        tablePat.setModel(new DefaultTableModel(data, liste));
+        revalidate(); 
+        this.setVisible(true); 
     }
 
     /**
@@ -56,7 +65,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
         ongletPatMed = new javax.swing.JTabbedPane();
         ongletPatient = new javax.swing.JPanel();
         spPat = new javax.swing.JScrollPane();
-        tablePat = new javax.swing.JTable();
+        tablePat = new javax.swing.JTable(){
+            public boolean isCellEditable(int d, int c){
+                return false;
+            }
+        };
         recherchePat = new javax.swing.JTextField();
         ongletMedecin = new javax.swing.JPanel();
         spMed = new javax.swing.JScrollPane();
@@ -83,6 +96,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tablePat.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tablePatPropertyChange(evt);
             }
         });
         spPat.setViewportView(tablePat);
@@ -180,6 +198,10 @@ public class FenetrePatMed extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rechercheMedActionPerformed
 
+    private void tablePatPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tablePatPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablePatPropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -211,7 +233,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetrePatMed().setVisible(true);
+                //new FenetrePatMed().setVisible(true);
             }
         });
     }

@@ -11,6 +11,10 @@
     <patient>
         <nom>Track</nom>
         <prenom>Pat</prenom>
+        <dateNaissance>08-07-1950</dateNaissance>
+        <adresse>18 rue du pont, Grenoble</adresse>
+        <numTel>0623232323</numTel>
+        <numSS>150072531111426</numSS>
     </patient>
     <acte>
         <code>CS</code>
@@ -36,6 +40,10 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Pat</prenom>
+        <dateNaissance>23-12-2000</dateNaissance>
+        <adresse>1 Avenue Lafayette, Grenoble</adresse>
+        <numTel>0601010101</numTel>
+        <numSS>100122531111426</numSS>
     </patient>
     <acte>
         <code>CSC</code>
@@ -57,6 +65,10 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Maggy</prenom>
+        <dateNaissance>03-1-1995</dateNaissance>
+        <adresse>18 chemin de sable, Grenoble</adresse>
+        <numTel>0667676767</numTel>
+        <numSS>195112531111426</numSS>
     </patient>
     <acte>
         <code>CSC</code>
@@ -74,10 +86,14 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Maggy</prenom>
+        <dateNaissance>18-0-1988</dateNaissance>
+        <adresse>18 rue du bois, Grenoble</adresse>
+        <numTel>0698989898</numTel>
+        <numSS>188022531111426</numSS>
     </patient>
     <acte>
         <code>KE</code>
-        <coef>1</coef>
+        <coef>1</coef>   
     </acte>
   </ficheDeSoins>
 
@@ -91,6 +107,10 @@
     <patient>
         <nom>Epi</nom>
         <prenom>Fanie</prenom>
+        <dateNaissance>05-05-2002</dateNaissance>
+        <adresse>18 Avenue des hommes, Grenoble</adresse>
+        <numTel>0678674534</numTel>
+        <numSS>102052531111426</numSS>
     </patient>
     <acte>
         <code>CS</code>
@@ -112,6 +132,10 @@
     <patient>
         <nom>Henfayitte</nom>
         <prenom>Melusine</prenom>
+        <dateNaissance>01-01-1999</dateNaissance>
+        <adresse>18 rue du bonheur, Grenoble</adresse>
+        <numTel>0690787689</numTel>
+        <numSS>199012531111426</numSS>
     </patient>
     <acte>
         <code>CS</code>

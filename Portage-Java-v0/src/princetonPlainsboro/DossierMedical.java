@@ -21,7 +21,15 @@ public class DossierMedical {
     }
     
     public void ajouterPatient(Patient p){
-        getListe_patient().add(p); 
+        if(!getListe_patient().contains(p)){
+            getListe_patient().add(p);
+        }
+    }
+    
+    public void ajouterMedecin(Medecin m){
+        if(!getListe_medecin().contains(m)){
+            getListe_medecin().add(m); 
+        }      
     }
 
     public void afficher() {
