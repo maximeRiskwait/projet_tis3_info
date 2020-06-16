@@ -2,6 +2,48 @@ package princetonPlainsboro;
 
 public class Patient {
 
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * @return the prenom
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
+     * @return the dateDeNaissance
+     */
+    public Date getDateDeNaissance() {
+        return dateDeNaissance;
+    }
+
+    /**
+     * @return the adresse
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * @return the numSecuSociale
+     */
+    public String getNumSecuSociale() {
+        return numSecuSociale;
+    }
+
+    /**
+     * @return the numTel
+     */
+    public String getNumTel() {
+        return numTel;
+    }
+
     private String nom;
     private String prenom;
     private Date dateDeNaissance;
@@ -25,13 +67,19 @@ public class Patient {
     }
 
     public String toString() {
-        return prenom + " " + nom;
+        return getPrenom() + " " + getNom();
+    }
+    
+    public String afficherDateNaissance(){
+        String s = ""; 
+        s = this.getDateDeNaissance().toString(); 
+        return s; 
     }
 
     public boolean equals(Object o) {
         if (o instanceof Patient) {
             Patient p = (Patient) o;
-            return nom.equals(p.nom) && prenom.equals(p.prenom);
+            return getNom().equals(p.getNom()) && getPrenom().equals(p.getPrenom());
         } else {
             return false;
         }

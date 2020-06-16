@@ -5,17 +5,29 @@
  */
 package projet.ui;
 
+import princetonPlainsboro.Date;
+import princetonPlainsboro.Patient;
+
 /**
  *
  * @author maximeriskwait
  */
 public class AffichageFichePatient extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form affichageFichePatient
      */
-    public AffichageFichePatient() {
-        initComponents();
+    public AffichageFichePatient(Patient p) {
+       initComponents();
+       this.nom.setText(p.getNom()); 
+       this.Prenom.setText(p.getPrenom());
+       this.adresse.setText(p.getAdresse());
+       this.dateNaissance.setText(p.afficherDateNaissance());
+       this.numTel.setText(p.getNumTel());
+       this.adresse.setText(p.getAdresse());
+       this.numSecuSoc.setText(p.getNumSecuSociale());
+        revalidate();
+        
     }
 
     /**
@@ -40,8 +52,8 @@ public class AffichageFichePatient extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         adresse = new javax.swing.JTextArea();
         labNumSecu = new javax.swing.JLabel();
-        numSecuSoc = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        numSecuSoc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Fiche Patient");
@@ -77,19 +89,15 @@ public class AffichageFichePatient extends javax.swing.JFrame {
 
         labNumSecu.setText("Numéro Sécurité Sociale :");
 
-        numSecuSoc.setText("1056821678");
-        numSecuSoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numSecuSocActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        numSecuSoc.setText("1291883232");
+        numSecuSoc.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,11 +111,11 @@ public class AffichageFichePatient extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(Prenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateNaissance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(numTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numSecuSoc)))
+                            .addComponent(numSecuSoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -158,7 +166,7 @@ public class AffichageFichePatient extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numSecuSoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numSecuSoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -184,12 +192,8 @@ public class AffichageFichePatient extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void numSecuSocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numSecuSocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numSecuSocActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -223,7 +227,9 @@ public class AffichageFichePatient extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AffichageFichePatient().setVisible(true);
+                Date d = new Date(23, 03, 1995); 
+                Patient p = new Patient("Bon", "Jean", d, "06 56 56 56 56", "18 rue de la fac, Grenoble", "1 2983729"); 
+                new AffichageFichePatient(p).setVisible(true);
             }
         });
     }
@@ -242,7 +248,7 @@ public class AffichageFichePatient extends javax.swing.JFrame {
     private javax.swing.JLabel labNumTel;
     private javax.swing.JLabel labPrenom;
     private javax.swing.JLabel nom;
-    private javax.swing.JTextField numSecuSoc;
+    private javax.swing.JLabel numSecuSoc;
     private javax.swing.JLabel numTel;
     // End of variables declaration//GEN-END:variables
 }
