@@ -22,11 +22,10 @@ public class FenetrePatMed extends javax.swing.JFrame {
     /**
      * Creates new form fenetrePatMed
      */
-    public FenetrePatMed(DossierMedical dm, ArrayList<Patient> listePat, ArrayList<Medecin> liste_medecin) {
+    public FenetrePatMed(DossierMedical dm, ArrayList<Patient> listePat) {
         initComponents();
         
-        this.liste_patient = listePat;
-        this.liste_medecin = liste_medecin; 
+        this.liste_patient = listePat; 
         this.dm = dm; 
         
         int nbrligne = liste_patient.size();

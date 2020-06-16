@@ -145,21 +145,21 @@ public class DossierMedical {
     /**
      * @return the fiches
      */
-    public List<FicheDeSoins> getFiches() {
+    public ArrayList<FicheDeSoins> getFiches() {
         return fiches;
     }
 
     /**
      * @return the liste_patient
      */
-    public List<Patient> getListe_patient() {
+    public ArrayList<Patient> getListe_patient() {
         return liste_patient;
     }
 
     /**
      * @return the liste_medecin
      */
-    public List<Medecin> getListe_medecin() {
+    public ArrayList<Medecin> getListe_medecin() {
         return liste_medecin;
     }
 }

@@ -1,12 +1,15 @@
 package princetonPlainsboro;
 
+import java.util.ArrayList;
+import projet.ui.FenetrePatMed; 
+
 class Test {
 
     public static void main(String[] args) {
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm = test.getDossier();
         dm.afficher();
-
+/*
         System.out.println("\n********\n");
 
         Patient p1 = new Patient("Bole", "Pat");
@@ -39,5 +42,11 @@ class Test {
         System.out.println();
         System.out.println("Dossier trie selon les couts :");
         dm.trier(new ComparaisonFichesCouts());
+        */ 
+
+        ArrayList<Patient> list_patient = new ArrayList<Patient>();  
+        list_patient = dm.getListe_patient(); 
+        FenetrePatMed fpm = new FenetrePatMed(dm, list_patient); 
+        
     }
 }
