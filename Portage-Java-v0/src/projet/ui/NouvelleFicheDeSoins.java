@@ -21,6 +21,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         initComponents();
         this.setSize(650,450);
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -199,11 +200,12 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_annulerActionPerformed
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
-        // TODO add your handling code here:
+        // créer une FicheDeSoins avec des getText puis l'ajouter a la liste / au xml si on est chaud
+        dispose();
     }//GEN-LAST:event_validerActionPerformed
 
     /**

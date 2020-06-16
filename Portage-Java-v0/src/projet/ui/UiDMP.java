@@ -47,11 +47,11 @@ public class UiDMP extends javax.swing.JFrame {
         butOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Dossier mÃ©dical Patient");
+        setTitle("Dossier médical Patient");
 
         labNomPat.setText("Nom : ");
 
-        labPrenomPat.setText("PrÃ©nom : ");
+        labPrenomPat.setText("Prénom : ");
 
         nomPat.setText("SMITH");
         nomPat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -64,7 +64,7 @@ public class UiDMP extends javax.swing.JFrame {
         ddNPat.setText("17/07/1967");
         ddNPat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        labNumSecu.setText("NumÃ©ro SÃ©curitÃ© Sociale");
+        labNumSecu.setText("Numéro Sécurité Sociale");
 
         numSecuSoc.setText("1 67 05 75 006 084 36");
         numSecuSoc.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -78,7 +78,7 @@ public class UiDMP extends javax.swing.JFrame {
         adresse.setText("18 rue de la fac, 38000, Grenoble ");
         spAdresse.setViewportView(adresse);
 
-        labNumTel.setText("NumÃ©ro de tÃ©lÃ©phone :");
+        labNumTel.setText("Numéro de téléphone :");
 
         numTelephone.setText("06 56 56 56 56");
         numTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -91,7 +91,7 @@ public class UiDMP extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Feuille de soins", "MÃ©decin", "Date"
+                "Feuille de soins", "Médecin", "Date"
             }
         ));
         spFdSoins.setViewportView(jTable1);
@@ -104,6 +104,11 @@ public class UiDMP extends javax.swing.JFrame {
         });
 
         butOK.setText("OK");
+        butOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butOKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,8 +203,12 @@ public class UiDMP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addFdSoinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFdSoinsActionPerformed
-        // TODO add your handling code here:
+        NouvelleFicheDeSoins f = new NouvelleFicheDeSoins("Nouvelle fiche de soin");
     }//GEN-LAST:event_addFdSoinsActionPerformed
+
+    private void butOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butOKActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_butOKActionPerformed
 
     /**
      * @param args the command line arguments
