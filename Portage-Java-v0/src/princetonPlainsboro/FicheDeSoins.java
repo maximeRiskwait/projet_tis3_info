@@ -10,7 +10,7 @@ public class FicheDeSoins {
     private String comMed; 
     private ArrayList<Acte> actes;       // contient des objets de classe 'Acte'
     
-    public FicheDeSoins(Patient patient, Medecin medecin, Date dateActe, String comMed) {
+    public FicheDeSoins(Patient patient, Medecin medecin, Date dateActe) {
         this.patient = patient;
         this.medecin = medecin;
         this.date = dateActe;
@@ -26,8 +26,8 @@ public class FicheDeSoins {
         getActes().add(acte);
         }
     
-    public void ajouterActe(Code code, int coefficient) {
-        Acte acte = new Acte(code, coefficient);
+    public void ajouterActe(Code code, int coefficient, String typeActe, String obs) {
+        Acte acte = new Acte(code, coefficient, typeActe, obs);
         getActes().add(acte);
         }
     

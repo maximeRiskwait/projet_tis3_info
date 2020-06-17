@@ -31,15 +31,29 @@ public enum Code {
     
     // m�thodes :
     public String toString() {
-        return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
+        return super.toString() + " : " + getLibelle() + ", cout=" + getCout() + " euros";
         }
     
     // calcule le prix pour un coefficient donne :
     public double calculerCout(int coefficient) {
-        return coefficient * cout;
+        return coefficient * getCout();
         }
     
     public String codeToString(){
         return super.toString(); 
+    }
+
+    /**
+     * @return the libelle
+     */
+    public String getLibelle() {
+        return libelle;
+    }
+
+    /**
+     * @return the cout
+     */
+    public double getCout() {
+        return cout;
     }
     }

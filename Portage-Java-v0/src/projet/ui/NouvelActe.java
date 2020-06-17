@@ -19,19 +19,19 @@ public class NouvelActe extends javax.swing.JFrame {
     private DossierMedical dm;
     private Medecin m; 
     private Acte acte;
+    private Code code;
     private NouvelleFicheDeSoins nfs; 
     /**
      * Creates new form NouvelActe
      */
-    public NouvelActe(String title, Medecin m, DossierMedical dm, NouvelleFicheDeSoins nfs) {
+    public NouvelActe(String title, DossierMedical dm, NouvelleFicheDeSoins nfs) {
         super(title);
         initComponents();
+        this.setVisible(true);
         this.dm = dm; 
         this.m = m; 
         this.nfs = nfs; 
-        this.nomMed.setText(m.getNom() +" "+ m.getPrenom());
-        
-        
+       
     }
 
     /**
@@ -46,21 +46,17 @@ public class NouvelActe extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        comboType = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
         valider = new javax.swing.JButton();
         annuler = new javax.swing.JButton();
-        nomMed = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        CodeActe = new javax.swing.JComboBox<>();
         nomActe = new javax.swing.JLabel();
         coutActe = new javax.swing.JLabel();
+        codeActe = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtObs = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,15 +64,9 @@ public class NouvelActe extends javax.swing.JFrame {
 
         jLabel2.setText("Type de l'acte:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diagnostique", "Thérapeutique" }));
-
-        jLabel3.setText("Date:");
-
-        jLabel4.setText("Medecin");
+        comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diagnostique", "Thérapeutique" }));
 
         jLabel5.setText("Observation:");
-
-        jScrollPane1.setViewportView(jTextPane1);
 
         jLabel6.setText("Coût de l'acte:");
 
@@ -94,12 +84,7 @@ public class NouvelActe extends javax.swing.JFrame {
             }
         });
 
-        nomMed.setText("Medecin");
-        nomMed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         jLabel7.setText("Code acte :");
-
-        CodeActe.setModel(new javax.swing.DefaultComboBoxModel<>(Code.name()));
 
         nomActe.setText("NOM Acte");
         nomActe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -107,80 +92,76 @@ public class NouvelActe extends javax.swing.JFrame {
         coutActe.setText("00");
         coutActe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        codeActe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CSC", "FP", "KC", "KE", "K", "KFA", "KFB", "ORT", "PRO" }));
+        codeActe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codeActeActionPerformed(evt);
+            }
+        });
+
+        txtObs.setColumns(20);
+        txtObs.setRows(5);
+        jScrollPane2.setViewportView(txtObs);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(valider)
-                .addGap(18, 18, 18)
-                .addComponent(annuler)
-                .addGap(224, 224, 224))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(valider)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(codeActe, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(nomActe, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1)
-                    .addComponent(nomActe, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CodeActe, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomMed, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(coutActe, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(annuler)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 148, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(coutActe, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jScrollPane1, jTextField2});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomMed)
-                    .addComponent(CodeActe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel3)
+                        .addComponent(codeActe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomActe)
                     .addComponent(coutActe))
-                .addGap(38, 38, 38)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valider)
                     .addComponent(annuler))
-                .addGap(48, 48, 48))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        //new String[] { "CS", "CSC", "FP   ", "KC", "KE", "K", "KFA", "KFB", "ORT", "PRO" }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,9 +185,15 @@ public class NouvelActe extends javax.swing.JFrame {
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
         
+        String typeActe = (String) comboType.getSelectedItem(); 
+        String observation = txtObs.getText(); 
         
+        acte = new Acte(code, 1, typeActe, observation);
         
-        
+        nfs.getListe_acte().add(acte); 
+         
+        this.dispose();
+        nfs.revalidate();
         
         
     }//GEN-LAST:event_validerActionPerformed
@@ -215,26 +202,65 @@ public class NouvelActe extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_annulerActionPerformed
 
-    
+    private void codeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActeActionPerformed
+        
+        String s = (String) codeActe.getSelectedItem(); 
+        
+        switch(s){
+            case "CS": 
+                this.code = Code.CS; 
+            break; 
+            case "CSC":
+                this.code = Code.CSC;
+            break; 
+            case "FP":
+                this.code = Code.FP;
+                break;
+            case "KC":
+                this.code = Code.KC;
+                break;
+            case "KE":
+                this.code = Code.KE;
+                break;
+            case "K":
+                this.code = Code.K;
+                break;
+            case "KFA":
+                this.code = Code.KFA;
+                break;
+            case "KFB":
+                this.code = Code.KFB;
+                break;
+            case "ORT":
+                this.code = Code.ORT;
+                break;
+            case "PRO": 
+                this.code = Code.PRO;
+                break;      
+        }
+        
+        this.nomActe.setText(code.getLibelle()); 
+        Double b = new Double(code.getCout()); 
+        this.coutActe.setText(b.toString()); 
+        
+        this.revalidate(); 
+        
+    }//GEN-LAST:event_codeActeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CodeActe;
     private javax.swing.JButton annuler;
+    private javax.swing.JComboBox<String> codeActe;
+    private javax.swing.JComboBox<String> comboType;
     private javax.swing.JLabel coutActe;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nomActe;
-    private javax.swing.JLabel nomMed;
+    private javax.swing.JTextArea txtObs;
     private javax.swing.JButton valider;
     // End of variables declaration//GEN-END:variables
 }
