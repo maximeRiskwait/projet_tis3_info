@@ -5,23 +5,53 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Patient; 
-
+import princetonPlainsboro.Acte; 
 /**
  *
  * @author melin
  */
 public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
+    private DossierMedical dm; 
+    private FicheDeSoins fds; 
+    private Patient p;
+    private ArrayList<Acte> liste_acte;
+    String[] liste; 
     /**
      * Creates new form FicheDeSoins
      */
-    public NouvelleFicheDeSoins(String title) {
+    public NouvelleFicheDeSoins(String title, DossierMedical dm, Patient p) {
         super(title);
         initComponents();
         this.setSize(650,450);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.dm = dm;
+        
+         this.liste[0] = "Nom";
+        this.liste[1] = "Prénom"; 
+        this.liste[2] = "Date de naissance";
+        this.liste[3] = "Numéro tel"; 
+        this.liste[4] = "Adresse"; 
+        this.liste[5] = "Numéro SS"; 
+        
+        /*Object  [][] data = new Object[this.liste_patient.size()][6];
+        for (int i = 0; i < liste_patient.size(); i++) {
+            data[i][0] = liste_patient.get(i).getNom();
+            data[i][1] = liste_patient.get(i).getPrenom();
+            data[i][2] = liste_patient.get(i).getDateDeNaissance().toString();
+            data[i][3] = liste_patient.get(i).getAdresse();
+            data[i][4] = liste_patient.get(i).getNumTel();
+            data[i][5] = liste_patient.get(i).getNumSecuSociale();
+            
+        }
+        tablePat.setModel(new DefaultTableModel(data, liste));*/
+        
     }
 
     /**
@@ -35,11 +65,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         labNom = new javax.swing.JLabel();
-        dataName = new javax.swing.JTextField();
         labPrenom = new javax.swing.JLabel();
-        dataPrenom = new javax.swing.JTextField();
         labDdN = new javax.swing.JLabel();
-        dataDateNaissance = new javax.swing.JTextField();
         labMed = new javax.swing.JLabel();
         dataMed = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -53,6 +80,9 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         labComMed = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        dateNaissancePat = new javax.swing.JLabel();
+        prenomPat = new javax.swing.JLabel();
+        nomPat2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nouvelle fiche de soins ");
@@ -68,6 +98,11 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         jLabel5.setText("Acte(s):");
 
         addActe.setText("Ajouter acte");
+        addActe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActeActionPerformed(evt);
+            }
+        });
 
         labDate.setText("Date:");
 
@@ -98,6 +133,15 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        dateNaissancePat.setText("DateNaissancePat");
+        dateNaissancePat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        prenomPat.setText("PrenomduPatient ");
+        prenomPat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        nomPat2.setText("NomduPatient");
+        nomPat2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,19 +151,20 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(valider)
+                                .addGap(32, 32, 32))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labNom)
-                                    .addComponent(dataName)
-                                    .addComponent(dataPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                                     .addComponent(labPrenom)
                                     .addComponent(jLabel5)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addActe))
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(valider)
-                                .addGap(32, 32, 32)))
+                                    .addComponent(addActe)
+                                    .addComponent(prenomPat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomPat2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labComMed)
@@ -127,18 +172,14 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                                 .addComponent(labMed)
                                 .addComponent(labDate)
                                 .addComponent(dataMed)
-                                .addComponent(dataDateNaissance)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
-                            .addComponent(annuler))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(annuler)
+                            .addComponent(dateNaissancePat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dataName, dataPrenom});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -148,16 +189,16 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                     .addComponent(labDdN))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataDateNaissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(dateNaissancePat, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomPat2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labMed)
                     .addComponent(labPrenom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dataMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prenomPat, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -204,9 +245,20 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     }//GEN-LAST:event_annulerActionPerformed
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
-        // cr�er une FicheDeSoins avec des getText puis l'ajouter a la liste / au xml si on est chaud
+        // cr�er une FicheDeSoins avec des getText puis l'ajouter a la liste / au xml si on est chaud
+       this.nomPat2.setText(p.getNom()); 
+       this.prenomPat.setText(p.getPrenom());
+       this.dateNaissancePat.setText(p.getDateDeNaissance().toString());
+       
+       
+        
+        
         dispose();
     }//GEN-LAST:event_validerActionPerformed
+
+    private void addActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActeActionPerformed
+        new NouvelActe("Nouvel Acte"); 
+    }//GEN-LAST:event_addActeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +291,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NouvelleFicheDeSoins("Nouvelle fiche de soin").setVisible(true);
+                //new NouvelleFicheDeSoins("Nouvelle fiche de soin").setVisible(true);
             }
         });
     }
@@ -247,10 +299,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addActe;
     private javax.swing.JButton annuler;
-    private javax.swing.JTextField dataDateNaissance;
     private javax.swing.JTextField dataMed;
-    private javax.swing.JTextField dataName;
-    private javax.swing.JTextField dataPrenom;
+    private javax.swing.JLabel dateNaissancePat;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -264,6 +314,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     private javax.swing.JLabel labNom;
     private javax.swing.JLabel labPrenom;
     private javax.swing.JList<String> listActe;
+    private javax.swing.JLabel nomPat2;
+    private javax.swing.JLabel prenomPat;
     private javax.swing.JButton valider;
     // End of variables declaration//GEN-END:variables
 }

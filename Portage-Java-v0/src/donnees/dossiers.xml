@@ -7,6 +7,7 @@
         <nom>Bono</nom>
         <prenom>Jean</prenom>
         <specialite>ORL</specialite>
+        <numTel>0612345678</numTel>
     </medecin>
     <patient>
         <nom>Track</nom>
@@ -36,6 +37,7 @@
         <nom>Deblouze</nom>
         <prenom>Agathe</prenom>
         <specialite>Cardiologue</specialite>
+        <numTel>0609876531</numTel>
     </medecin>
     <patient>
         <nom>Bole</nom>
@@ -61,6 +63,7 @@
         <nom>Deblouze</nom>
         <prenom>Agathe</prenom>
         <specialite>Cardiologue</specialite>
+        <numTel>0676893449</numTel>
     </medecin>
     <patient>
         <nom>Bole</nom>
@@ -82,6 +85,7 @@
         <nom>Heget</nom>
         <prenom>Yves</prenom>
         <specialite>Gynecologie</specialite>
+        <numTel>0600011134</numTel>
     </medecin>
     <patient>
         <nom>Bole</nom>
@@ -103,6 +107,7 @@
         <nom>Covert</nom>
         <prenom>Harry</prenom>
         <specialite>ORL</specialite>
+        <numTel>0656455645</numTel>
     </medecin>
     <patient>
         <nom>Epi</nom>
@@ -128,6 +133,7 @@
         <nom>Foupasune</nom>
         <prenom>Jean</prenom>
         <specialite>ORL</specialite>
+        <numTel>0611111111</numTel>
     </medecin>
     <patient>
         <nom>Henfayitte</nom>

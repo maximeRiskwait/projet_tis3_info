@@ -52,10 +52,6 @@ public class Patient {
     private String numTel; 
     private String mdp; 
 
-    public Patient(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
-    }
     
     public Patient(String nom, String prenom, Date dateNaissance,String num, String adresse, String numSecu){
         this.nom= nom; 

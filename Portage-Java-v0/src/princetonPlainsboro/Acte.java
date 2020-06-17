@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-class Acte {
+public class Acte {
     private Code code;      
     private int coef;
     private String nomActe; 
@@ -69,6 +69,55 @@ class Acte {
      */
     public String getObservation() {
         return observation;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(Code code) {
+        this.code = code;
+    }
+
+    /**
+     * @param coef the coef to set
+     */
+    public void setCoef(int coef) {
+        this.coef = coef;
+    }
+
+    /**
+     * @param nomActe the nomActe to set
+     */
+    public void setNomActe(String nomActe) {
+        this.nomActe = nomActe;
+    }
+
+    /**
+     * @param nomMedecin the nomMedecin to set
+     */
+    public void setNomMedecin(String nomMedecin) {
+        this.nomMedecin = nomMedecin;
+    }
+
+    /**
+     * @param dateRealisation the dateRealisation to set
+     */
+    public void setDateRealisation(Date dateRealisation) {
+        this.dateRealisation = dateRealisation;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @param observation the observation to set
+     */
+    public void setObservation(String observation) {
+        this.observation = observation;
     }
     
     }

@@ -98,7 +98,7 @@ public class LectureXML {
                             dossierCourant.ajouterFiche(f);
                         }
                         if (parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante);
+                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, numTelCourant);
                             dossierCourant.ajouterMedecin(medecinCourant);
                         }
                         if (parser.getLocalName().equals("nom")) {

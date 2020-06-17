@@ -9,10 +9,11 @@ public class Medecin {
     
     //Mot de passe pour acceder au systeme
     
-    public Medecin(String nom, String prenom, String specialite) {
+    public Medecin(String nom, String prenom, String specialite, String numTel) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
+        this.numTel = numTel; 
         this.mdp = nom.toUpperCase();
         }
     

@@ -26,7 +26,7 @@ public class AffichageFichePatient extends javax.swing.JFrame {
        this.numTel.setText(p.getNumTel());
        this.adresse.setText(p.getAdresse());
        this.numSecuSoc.setText(p.getNumSecuSociale());
-        revalidate();
+       revalidate();
         
     }
 

@@ -50,21 +50,22 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="valider" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="labNom" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="dataName" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="dataPrenom" linkSize="3" alignment="0" pref="204" max="32767" attributes="0"/>
                                       <Component id="labPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane1" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
                                       <Component id="addActe" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prenomPat" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                                      <Component id="nomPat2" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="valider" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -74,12 +75,11 @@
                                   <Component id="labMed" min="-2" max="-2" attributes="0"/>
                                   <Component id="labDate" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="dataMed" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dataDateNaissance" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane2" alignment="0" pref="204" max="32767" attributes="0"/>
                               </Group>
                               <Component id="annuler" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateNaissancePat" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -100,18 +100,18 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dataName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataDateNaissance" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateNaissancePat" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="nomPat2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="labMed" min="-2" max="-2" attributes="0"/>
                       <Component id="labPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dataPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataMed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="dataMed" min="-2" max="-2" attributes="0"/>
+                      <Component id="prenomPat" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -149,21 +149,15 @@
             <Property name="text" type="java.lang.String" value="Nom:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dataName">
-        </Component>
         <Component class="javax.swing.JLabel" name="labPrenom">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pr&#xe9;nom:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dataPrenom">
-        </Component>
         <Component class="javax.swing.JLabel" name="labDdN">
           <Properties>
             <Property name="text" type="java.lang.String" value="Date de naissance:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="dataDateNaissance">
         </Component>
         <Component class="javax.swing.JLabel" name="labMed">
           <Properties>
@@ -181,6 +175,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ajouter acte"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addActeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labDate">
           <Properties>
@@ -247,6 +244,36 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="dateNaissancePat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="DateNaissancePat"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="prenomPat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PrenomduPatient "/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nomPat2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NomduPatient"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

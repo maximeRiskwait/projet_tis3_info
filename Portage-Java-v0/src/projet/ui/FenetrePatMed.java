@@ -34,9 +34,9 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         this.liste[0] = "Nom";
         this.liste[1] = "Prénom"; 
-        this.liste[2] = "Date de naissance"; 
-        this.liste[3] = "Adresse"; 
-        this.liste[4] = "Numéro tel"; 
+        this.liste[2] = "Date de naissance";
+        this.liste[3] = "Numéro tel"; 
+        this.liste[4] = "Adresse"; 
         this.liste[5] = "Numéro SS"; 
         
         Object  [][] data = new Object[this.liste_patient.size()][6];
@@ -63,7 +63,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
             data[i][0] = liste_medecin.get(i).getNom();
             data[i][1] = liste_medecin.get(i).getPrenom();
             data[i][2] = liste_medecin.get(i).getSpecialite();
-            data[i][3] = liste_patient.get(i).getNumTel();
+            data[i][3] = liste_medecin.get(i).getNumTel();
         }
         tableMed.setModel(new DefaultTableModel(data, liste));
         
@@ -89,128 +89,157 @@ public class FenetrePatMed extends javax.swing.JFrame {
             }
         };
         recherchePat = new javax.swing.JTextField();
+        afficher = new javax.swing.JButton();
         ongletMedecin = new javax.swing.JPanel();
         spMed = new javax.swing.JScrollPane();
-        tableMed = new javax.swing.JTable();
-        rechercheMed = new javax.swing.JTextField();
+        tableMed = new javax.swing.JTable(){
+            public boolean isCellEditable(int d, int c){
+                return false;
+            }}
+            ;
+            rechercheMed = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Médical");
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("Médical");
 
-        tablePat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nom", "Prenom", "Date Naissance", "Adresse", "Numéro tel", "NuméroSS"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+            ongletPatMed.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    ongletPatMedMouseClicked(evt);
+                }
+            });
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tablePat.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tablePatPropertyChange(evt);
-            }
-        });
-        spPat.setViewportView(tablePat);
+            tablePat.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null}
+                },
+                new String [] {
+                    "Nom", "Prenom", "Date Naissance", "Adresse", "Numéro tel", "NuméroSS"
+                }
+            ) {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                };
 
-        recherchePat.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-        recherchePat.setText("Rechercher un patient");
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            tablePat.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    tablePatMouseClicked(evt);
+                }
+            });
+            tablePat.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+                public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                    tablePatPropertyChange(evt);
+                }
+            });
+            spPat.setViewportView(tablePat);
 
-        javax.swing.GroupLayout ongletPatientLayout = new javax.swing.GroupLayout(ongletPatient);
-        ongletPatient.setLayout(ongletPatientLayout);
-        ongletPatientLayout.setHorizontalGroup(
-            ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ongletPatientLayout.createSequentialGroup()
-                .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ongletPatientLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
-                    .addGroup(ongletPatientLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        ongletPatientLayout.setVerticalGroup(
-            ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ongletPatientLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(spPat, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
+            recherchePat.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+            recherchePat.setText("Rechercher un patient");
 
-        ongletPatMed.addTab("Patient", ongletPatient);
+            afficher.setText("Afficher");
+            afficher.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    afficherActionPerformed(evt);
+                }
+            });
 
-        tableMed.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "NOM", "Prénom", "Spécialité"
-            }
-        ));
-        spMed.setViewportView(tableMed);
+            javax.swing.GroupLayout ongletPatientLayout = new javax.swing.GroupLayout(ongletPatient);
+            ongletPatient.setLayout(ongletPatientLayout);
+            ongletPatientLayout.setHorizontalGroup(
+                ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ongletPatientLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                        .addGroup(ongletPatientLayout.createSequentialGroup()
+                            .addComponent(afficher)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap())
+            );
+            ongletPatientLayout.setVerticalGroup(
+                ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ongletPatientLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(spPat, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ongletPatientLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(43, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletPatientLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(afficher)
+                            .addGap(28, 28, 28))))
+            );
 
-        rechercheMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-        rechercheMed.setText("Rechercher un medecin");
-        rechercheMed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rechercheMedActionPerformed(evt);
-            }
-        });
+            ongletPatMed.addTab("Patient", ongletPatient);
 
-        javax.swing.GroupLayout ongletMedecinLayout = new javax.swing.GroupLayout(ongletMedecin);
-        ongletMedecin.setLayout(ongletMedecinLayout);
-        ongletMedecinLayout.setHorizontalGroup(
-            ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ongletMedecinLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletMedecinLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        ongletMedecinLayout.setVerticalGroup(
-            ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ongletMedecinLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(spMed, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+            tableMed.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null, null},
+                    {null, null, null}
+                },
+                new String [] {
+                    "NOM", "Prénom", "Spécialité"
+                }
+            ));
+            spMed.setViewportView(tableMed);
 
-        ongletPatMed.addTab("Médecin", ongletMedecin);
+            rechercheMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+            rechercheMed.setText("Rechercher un medecin");
+            rechercheMed.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    rechercheMedActionPerformed(evt);
+                }
+            });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ongletPatMed)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ongletPatMed)
-        );
+            javax.swing.GroupLayout ongletMedecinLayout = new javax.swing.GroupLayout(ongletMedecin);
+            ongletMedecin.setLayout(ongletMedecinLayout);
+            ongletMedecinLayout.setHorizontalGroup(
+                ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ongletMedecinLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletMedecinLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap())
+            );
+            ongletMedecinLayout.setVerticalGroup(
+                ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ongletMedecinLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(spMed, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(42, Short.MAX_VALUE))
+            );
 
-        ongletPatMed.getAccessibleContext().setAccessibleName("");
+            ongletPatMed.addTab("Médecin", ongletMedecin);
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ongletPatMed)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ongletPatMed)
+            );
+
+            ongletPatMed.getAccessibleContext().setAccessibleName("");
+
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void rechercheMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheMedActionPerformed
         // TODO add your handling code here:
@@ -219,6 +248,31 @@ public class FenetrePatMed extends javax.swing.JFrame {
     private void tablePatPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tablePatPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_tablePatPropertyChange
+
+    private void ongletPatMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ongletPatMedMouseClicked
+        
+        
+    }//GEN-LAST:event_ongletPatMedMouseClicked
+
+    private void tablePatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePatMouseClicked
+        
+        DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
+        int selectedRowIndex = tablePat.getSelectedRow(); 
+        
+        String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
+        
+        new AffichageFichePatient(obtenirPatient(numSS)); 
+        
+    }//GEN-LAST:event_tablePatMouseClicked
+
+    private void afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
+        int selectedRowIndex = tablePat.getSelectedRow(); 
+        
+        String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
+        
+        AffichageFichePatient fp = new AffichageFichePatient(obtenirPatient(numSS));
+    }//GEN-LAST:event_afficherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,8 +309,24 @@ public class FenetrePatMed extends javax.swing.JFrame {
             }
         });
     }
+    
+    public Patient obtenirPatient(String numSS){
+        Patient p; 
+        int i =0; 
+        while(i<dm.getListe_patient().size() &&
+                !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())){
+            i++; 
+        }
+        if(i<dm.getListe_patient().size()){
+            p = dm.getListe_patient().get(i); 
+        }
+        else p = null; 
+        
+        return p; 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton afficher;
     private javax.swing.JPanel ongletMedecin;
     private javax.swing.JTabbedPane ongletPatMed;
     private javax.swing.JPanel ongletPatient;

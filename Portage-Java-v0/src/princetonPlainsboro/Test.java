@@ -8,7 +8,7 @@ class Test {
     public static void main(String[] args) {
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm = test.getDossier();
-        dm.afficher();
+        //dm.afficher();
         /*Date date = new Date(13, 06, 1978); 
 
         System.out.println("\n********\n");

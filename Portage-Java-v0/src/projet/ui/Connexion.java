@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import princetonPlainsboro.ConnexionProcess;
 import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.LectureXML;
 import princetonPlainsboro.Medecin;
 
 /**
