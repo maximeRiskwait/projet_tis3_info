@@ -11,6 +11,8 @@ import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Patient; 
 import princetonPlainsboro.Acte; 
+import princetonPlainsboro.Date;
+import princetonPlainsboro.Medecin;
 /**
  *
  * @author melin
@@ -20,6 +22,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     private DossierMedical dm; 
     private FicheDeSoins fds; 
     private Patient p;
+    private Medecin m; 
     private ArrayList<Acte> liste_acte;
     String[] liste; 
     /**
@@ -33,7 +36,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         this.setVisible(true);
         this.dm = dm;
         
-         this.liste[0] = "Nom";
+        this.liste[0] = "Nom";
         this.liste[1] = "Prénom"; 
         this.liste[2] = "Date de naissance";
         this.liste[3] = "Numéro tel"; 
@@ -72,14 +75,14 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         addActe = new javax.swing.JButton();
         labDate = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        dateActe = new javax.swing.JTextField();
         valider = new javax.swing.JButton();
         annuler = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listActe = new javax.swing.JList<>();
         labComMed = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        comMedArea = new javax.swing.JTextArea();
         dateNaissancePat = new javax.swing.JLabel();
         prenomPat = new javax.swing.JLabel();
         nomPat2 = new javax.swing.JLabel();
@@ -95,6 +98,9 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
         labMed.setText("Médecin:");
 
+        dataMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        dataMed.setText("Nom+prénom");
+
         jLabel5.setText("Acte(s):");
 
         addActe.setText("Ajouter acte");
@@ -105,6 +111,14 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         });
 
         labDate.setText("Date:");
+
+        dateActe.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        dateActe.setText("JJ/MM/AAAA");
+        dateActe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateActeActionPerformed(evt);
+            }
+        });
 
         valider.setText("Valider");
         valider.addActionListener(new java.awt.event.ActionListener() {
@@ -129,9 +143,9 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
         labComMed.setText("Commentaire du médecin :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        comMedArea.setColumns(20);
+        comMedArea.setRows(5);
+        jScrollPane2.setViewportView(comMedArea);
 
         dateNaissancePat.setText("DateNaissancePat");
         dateNaissancePat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -177,7 +191,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                             .addComponent(dateNaissancePat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dateActe, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,7 +228,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateActe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(annuler)
@@ -250,6 +264,17 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
        this.prenomPat.setText(p.getPrenom());
        this.dateNaissancePat.setText(p.getDateDeNaissance().toString());
        
+       String comMed = this.comMedArea.getText(); 
+       String[] tab = this.dateActe.getText().split("/"); 
+       // JJ/MM/AA
+       Date dateActe = new Date(Integer.parseInt(tab[0]),Integer.parseInt(tab[1]),Integer.parseInt(tab[2])); 
+       
+       String[] tabMed = this.dataMed.getText().split("+"); 
+        
+       m = obtenirMedecin(tabMed[0], tabMed[1]); 
+       
+       
+       
        
         
         
@@ -257,56 +282,41 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     }//GEN-LAST:event_validerActionPerformed
 
     private void addActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActeActionPerformed
-        new NouvelActe("Nouvel Acte"); 
+        new NouvelActe("Nouvel Acte", m, dm, this); 
     }//GEN-LAST:event_addActeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFicheDeSoins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void dateActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateActeActionPerformed
+    
+    public Medecin obtenirMedecin(String nom, String prenom){
+        Medecin m; 
+        int i =0; 
+        while(i<dm.getListe_medecin().size() &&
+                !nom.equals(dm.getListe_medecin().get(i).getNom()) &&
+                    !prenom.equals(dm.getListe_medecin().get(i).getPrenom())){
+            i++; 
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new NouvelleFicheDeSoins("Nouvelle fiche de soin").setVisible(true);
-            }
-        });
+        if(i<dm.getListe_patient().size()){
+            m = dm.getListe_medecin().get(i); 
+        }
+        else m = null; 
+        
+        return m; 
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addActe;
     private javax.swing.JButton annuler;
+    private javax.swing.JTextArea comMedArea;
     private javax.swing.JTextField dataMed;
+    private javax.swing.JTextField dateActe;
     private javax.swing.JLabel dateNaissancePat;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel labComMed;
     private javax.swing.JLabel labDate;
     private javax.swing.JLabel labDdN;

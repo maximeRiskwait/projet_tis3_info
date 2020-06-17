@@ -7,12 +7,14 @@ public class FicheDeSoins {
     private Patient patient;
     private Medecin medecin;
     private Date date;
+    private String comMed; 
     private ArrayList<Acte> actes;       // contient des objets de classe 'Acte'
     
-    public FicheDeSoins(Patient patient, Medecin medecin, Date date) {
+    public FicheDeSoins(Patient patient, Medecin medecin, Date dateActe, String comMed) {
         this.patient = patient;
         this.medecin = medecin;
-        this.date = date;
+        this.date = dateActe;
+        this.comMed = comMed; 
         actes = new ArrayList<Acte>();   // liste vide
         }
     

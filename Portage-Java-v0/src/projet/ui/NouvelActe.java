@@ -8,6 +8,7 @@ package projet.ui;
 import princetonPlainsboro.Acte;
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.Medecin;
+import princetonPlainsboro.Code; 
 
 /**
  *
@@ -17,15 +18,17 @@ public class NouvelActe extends javax.swing.JFrame {
     
     private DossierMedical dm;
     private Medecin m; 
-    private Acte acte; 
+    private Acte acte;
+    private NouvelleFicheDeSoins nfs; 
     /**
      * Creates new form NouvelActe
      */
-    public NouvelActe(String title, Medecin m, DossierMedical dm) {
+    public NouvelActe(String title, Medecin m, DossierMedical dm, NouvelleFicheDeSoins nfs) {
         super(title);
         initComponents();
         this.dm = dm; 
         this.m = m; 
+        this.nfs = nfs; 
         this.nomMed.setText(m.getNom() +" "+ m.getPrenom());
         
         
@@ -51,8 +54,8 @@ public class NouvelActe extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        valider = new javax.swing.JButton();
+        annuler = new javax.swing.JButton();
         nomMed = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         CodeActe = new javax.swing.JComboBox<>();
@@ -77,21 +80,26 @@ public class NouvelActe extends javax.swing.JFrame {
 
         jLabel6.setText("Coût de l'acte:");
 
-        jButton1.setText("Valider");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        valider.setText("Valider");
+        valider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                validerActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Annuler");
+        annuler.setText("Annuler");
+        annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annulerActionPerformed(evt);
+            }
+        });
 
         nomMed.setText("Medecin");
         nomMed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel7.setText("Code acte :");
 
-        CodeActe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CSC", "FP   ", "KC", "KE", "K", "KFA", "KFB", "ORT", "PRO" }));
+        CodeActe.setModel(new javax.swing.DefaultComboBoxModel<>(Code.name()));
 
         nomActe.setText("NOM Acte");
         nomActe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -105,9 +113,9 @@ public class NouvelActe extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(valider)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(annuler)
                 .addGap(224, 224, 224))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -117,9 +125,9 @@ public class NouvelActe extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(CodeActe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(nomActe, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomActe, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodeActe, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -167,10 +175,12 @@ public class NouvelActe extends javax.swing.JFrame {
                     .addComponent(coutActe))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(valider)
+                    .addComponent(annuler))
                 .addGap(48, 48, 48))
         );
+
+        //new String[] { "CS", "CSC", "FP   ", "KC", "KE", "K", "KFA", "KFB", "ORT", "PRO" }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,17 +202,25 @@ public class NouvelActe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_validerActionPerformed
+
+    private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
+        this.dispose(); 
+    }//GEN-LAST:event_annulerActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CodeActe;
+    private javax.swing.JButton annuler;
     private javax.swing.JLabel coutActe;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -217,5 +235,6 @@ public class NouvelActe extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel nomActe;
     private javax.swing.JLabel nomMed;
+    private javax.swing.JButton valider;
     // End of variables declaration//GEN-END:variables
 }
