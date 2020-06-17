@@ -262,7 +262,6 @@ public class FenetrePatMed extends javax.swing.JFrame {
         String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
         System.out.println(numSS);
 
-        //new AffichageFichePatient(obtenirPatient(numSS)); 
         
     }//GEN-LAST:event_tablePatMouseClicked
 

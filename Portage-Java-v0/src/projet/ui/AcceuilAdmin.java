@@ -20,6 +20,7 @@ public class AcceuilAdmin extends javax.swing.JFrame {
         super(title);
         initComponents();
         this.dm=dm;
+        this.setVisible(true);
     }
 
     /**
@@ -112,7 +113,7 @@ public class AcceuilAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        obtenirPatient(jTextField1.getText());
+        new AffichageFichePatient(obtenirPatient(jTextField1.getText()));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public Patient obtenirPatient(String numSS){

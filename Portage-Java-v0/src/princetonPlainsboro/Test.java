@@ -47,9 +47,9 @@ class Test {
          
 
 
-        //FenetrePatMed fpm = new FenetrePatMed(dm); 
+        FenetrePatMed fpm = new FenetrePatMed(dm); 
         new Connexion("test", dm).setVisible(true);
-        
+        new AcceuilAdmin("Accueil", dm);
         /*for(int i = 0; i<dm.getListe_patient().size();i++){
                 System.out.println(dm.getListe_patient().get(i).getNom());
         }
