@@ -5,8 +5,11 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import princetonPlainsboro.ConnexionProcess;
+import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.Medecin;
 
 /**
  *
@@ -17,8 +20,11 @@ public class Connexion extends javax.swing.JFrame {
     /**
      * Creates new form Connexion
      */
-    public Connexion(String title) {
+    private DossierMedical dm;
+
+    public Connexion(String title, DossierMedical dm) {
         super(title);
+        this.dm = dm;
         initComponents();
     }
 
@@ -127,11 +133,13 @@ public class Connexion extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ConnexionProcess cp = new ConnexionProcess(login, password);
+        ConnexionProcess cp = new ConnexionProcess(login.getText(), new String(password.getPassword()), dm.getListe_medecin());
+        System.out.println(login + "   " + password);
         JOptionPane jop1 = new JOptionPane();
         if (cp.connexionReussie() == true) {
             System.out.println("Connexion Réussie");
             this.dispose();
+            new FenetrePatMed(dm);
         } else {
             jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
                     "ERREUR", JOptionPane.ERROR_MESSAGE);
@@ -169,7 +177,7 @@ public class Connexion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Connexion("Connexion CHU Princeton-Plainsboro").setVisible(true);
+                //new Connexion("Connexion CHU Princeton-Plainsboro").setVisible(true);
 
             }
         });

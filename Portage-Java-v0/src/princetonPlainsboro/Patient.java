@@ -50,6 +50,7 @@ public class Patient {
     private String adresse;
     private String numSS;
     private String numTel; 
+    private String mdp; 
 
     public Patient(String nom, String prenom) {
         this.nom = nom;
@@ -65,6 +66,8 @@ public class Patient {
         this.numSS = numSecu; 
         
     }
+    
+ 
 
     public String toString() {
         return getPrenom() + " " + getNom();
@@ -98,4 +101,6 @@ public class Patient {
     public void setNumSS(String numSS) {
         this.numSS = numSS;
     }
+    
+    
 }

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package princetonPlainsboro;
- 
+
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -18,50 +19,41 @@ public class ConnexionProcess {
     private String login;
     private String password;
     private boolean success;
-    
-    public ConnexionProcess(JTextField login, JPasswordField password){
-        
-        this.login = login.getText().toUpperCase(); 
-        this.password = new String(password.getPassword()); 
-        this.success=false; 
-        
+    private ArrayList<Medecin> liste_medecin;
+
+    public ConnexionProcess(String login, String password, ArrayList<Medecin> liste_medecin) {
+
+        this.login = login;
+        this.password = new String(password);
+        this.success = false;
+        this.liste_medecin = liste_medecin;
     }
-     
-    
-    public boolean connexionReussie (){  
-        
-        this.success=false; 
-        JOptionPane jop1 = new JOptionPane(); 
-        
-        switch(login){
-            case "SECRETAIREMED":
-                if(password.equals("SMED135")){
-                    success = true; 
-                } 
-                
-                break; 
-            case "MEDECIN": 
-                if(password.equals("Medecin123")){
-                    success = true; 
-                }
-                
-                break; 
-            case "SECRETAIREADM":
-                if(password.equals("SAdmin369")){
-                    success = true; 
-                } 
-                break; 
-            default :
-                jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
-                            "ERREUR", JOptionPane.ERROR_MESSAGE);
-            
+
+    public boolean connexionReussie() {
+
+        this.success = false;
+        JOptionPane jop1 = new JOptionPane();
+
+        int i = 0;
+        while (i < liste_medecin.size() && !liste_medecin.get(i).getLogin().equals(login)) {
+            i++;
         }
-        
-        
-        return success; 
-        
+        if (i == liste_medecin.size()) {
+            success = false;
+            jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou "
+                    + "le mot de passe sont INCORRECT",
+                    "ERREUR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (liste_medecin.get(i).getMdp().equals(password)) { // on vérifie maintenant que le password est bien correct
+                success = true;
+            }
+        }
+
+
+        return success;
+
     }
-    
+
     public String getLogin() {
         return login;
     }

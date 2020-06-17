@@ -5,12 +5,15 @@ public class Medecin {
     private String prenom;
     private String specialite;
     private String numTel; 
+    private String mdp; 
+    
     //Mot de passe pour acceder au systeme
     
     public Medecin(String nom, String prenom, String specialite) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
+        this.mdp = nom.toUpperCase();
         }
     
     public String getSpecialite() { return specialite; }
@@ -48,6 +51,14 @@ public class Medecin {
     public String getNumTel() {
         return numTel;
     }
+    
+    public String getLogin(){
+        return nom.toLowerCase() + prenom.toLowerCase() + "1";
     }
+    
+    public String getMdp(){
+        return mdp;
+    }
+}
 
 

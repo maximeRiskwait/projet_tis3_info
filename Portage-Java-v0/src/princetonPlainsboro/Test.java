@@ -1,7 +1,7 @@
 package princetonPlainsboro;
 
 import java.util.ArrayList;
-import projet.ui.FenetrePatMed; 
+import projet.ui.*; 
 
 class Test {
 
@@ -46,16 +46,16 @@ class Test {
         dm.trier(new ComparaisonFichesCouts());*/
          
 
-        ArrayList<Patient> list_patient = new ArrayList<Patient>();  
-        list_patient = dm.getListe_patient(); 
-        FenetrePatMed fpm = new FenetrePatMed(dm, list_patient); 
+
+        //FenetrePatMed fpm = new FenetrePatMed(dm); 
+        new Connexion("test", dm).setVisible(true);
         
-        for(int i = 0; i<dm.getListe_patient().size();i++){
+        /*for(int i = 0; i<dm.getListe_patient().size();i++){
                 System.out.println(dm.getListe_patient().get(i).getNom());
         }
         System.out.println("");
         for(int i = 0; i<list_patient.size();i++){
                 System.out.println(dm.getListe_patient().get(i).getNom());
-        }
+        }*/
     }
 }

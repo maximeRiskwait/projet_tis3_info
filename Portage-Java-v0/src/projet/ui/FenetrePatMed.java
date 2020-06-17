@@ -17,15 +17,17 @@ import princetonPlainsboro.Patient;
 public class FenetrePatMed extends javax.swing.JFrame {
 
     private ArrayList<Patient> liste_patient; 
+    private ArrayList<Medecin> liste_medecin; 
     private DossierMedical dm; 
     private String[] liste; 
-    /**
-     * Creates new form fenetrePatMed
-     */
-    public FenetrePatMed(DossierMedical dm, ArrayList<Patient> listePat) {
+
+    
+    
+    public FenetrePatMed(DossierMedical dm) {
         initComponents();
         
-        this.liste_patient = listePat; 
+        this.liste_patient = dm.getListe_patient(); 
+        this.liste_medecin = dm.getListe_medecin(); 
         this.dm = dm; 
         this.liste = new String[6]; 
        
@@ -37,7 +39,6 @@ public class FenetrePatMed extends javax.swing.JFrame {
         this.liste[4] = "Numéro tel"; 
         this.liste[5] = "Numéro SS"; 
         
-        int k = 0;
         Object  [][] data = new Object[this.liste_patient.size()][6];
         for (int i = 0; i < liste_patient.size(); i++) {
             data[i][0] = liste_patient.get(i).getNom();
@@ -49,6 +50,23 @@ public class FenetrePatMed extends javax.swing.JFrame {
             
         }
         tablePat.setModel(new DefaultTableModel(data, liste));
+        
+        
+        this.liste = new String[4]; 
+        this.liste[0] = "Nom";
+        this.liste[1] = "Prénom"; 
+        this.liste[2] = "Spécialité"; 
+        this.liste[3] = "Numéro tel"; 
+        
+        data = new Object[this.liste_medecin.size()][6];
+        for (int i = 0; i < liste_medecin.size(); i++) {
+            data[i][0] = liste_medecin.get(i).getNom();
+            data[i][1] = liste_medecin.get(i).getPrenom();
+            data[i][2] = liste_medecin.get(i).getSpecialite();
+            data[i][3] = liste_patient.get(i).getNumTel();
+        }
+        tableMed.setModel(new DefaultTableModel(data, liste));
+        
         revalidate(); 
         this.setVisible(true); 
     }
