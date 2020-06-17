@@ -258,10 +258,10 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
         int selectedRowIndex = tablePat.getSelectedRow(); 
-        
+        //System.out.println(selectedRowIndex);
         String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
-        
-        new AffichageFichePatient(obtenirPatient(numSS)); 
+        System.out.println(numSS);
+
         
     }//GEN-LAST:event_tablePatMouseClicked
 
@@ -313,8 +313,10 @@ public class FenetrePatMed extends javax.swing.JFrame {
     public Patient obtenirPatient(String numSS){
         Patient p; 
         int i =0; 
+        System.out.println("test");
         while(i<dm.getListe_patient().size() &&
                 !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())){
+            System.out.println("num : " + dm.getListe_patient().get(i).getNumSecuSociale());
             i++; 
         }
         if(i<dm.getListe_patient().size()){

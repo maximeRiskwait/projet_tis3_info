@@ -134,17 +134,28 @@ public class Connexion extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ConnexionProcess cp = new ConnexionProcess(login.getText(), new String(password.getPassword()), dm.getListe_medecin());
-        System.out.println(login + "   " + password);
-        JOptionPane jop1 = new JOptionPane();
-        if (cp.connexionReussie() == true) {
-            System.out.println("Connexion Réussie");
+        String log, pass;
+        log = login.getText();
+        pass = new String(password.getPassword());
+        if (log.equals("secretaireA") && pass.equals("sec")) {
+            this.dispose();
+            new AcceuilAdmin("Administration", dm);
+        } else if (log.equals("secretaireM") && pass.equals("sec")) {
             this.dispose();
             new FenetrePatMed(dm);
         } else {
-            jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
-                    "ERREUR", JOptionPane.ERROR_MESSAGE);
 
+            ConnexionProcess cp = new ConnexionProcess(log, pass, dm.getListe_medecin());
+            JOptionPane jop1 = new JOptionPane();
+            if (cp.connexionReussie() == true) {
+                System.out.println("Connexion Réussie");
+                this.dispose();
+                new FenetrePatMed(dm);
+            } else {
+                jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou le mot de passe sont INCORRECT",
+                        "ERREUR", JOptionPane.ERROR_MESSAGE);
+
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

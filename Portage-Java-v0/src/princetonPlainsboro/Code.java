@@ -6,7 +6,7 @@ package princetonPlainsboro;
 // Par exemple, la valeur Code.FP a un attribut 'libelle' contenant la chaine
 // de caracteres "forfait pediatrique" et un attribut 'cout' ayant la valeur 5.0
 
-enum Code {
+public enum Code {
     // valeurs de l'�num :
     CS("consultation au cabinet", 23.0),
     CSC("consultation cardiologie", 45.73),
@@ -31,11 +31,29 @@ enum Code {
     
     // m�thodes :
     public String toString() {
-        return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
+        return super.toString() + " : " + getLibelle() + ", cout=" + getCout() + " euros";
         }
     
     // calcule le prix pour un coefficient donne :
     public double calculerCout(int coefficient) {
-        return coefficient * cout;
+        return coefficient * getCout();
         }
+    
+    public String codeToString(){
+        return super.toString(); 
+    }
+
+    /**
+     * @return the libelle
+     */
+    public String getLibelle() {
+        return libelle;
+    }
+
+    /**
+     * @return the cout
+     */
+    public double getCout() {
+        return cout;
+    }
     }

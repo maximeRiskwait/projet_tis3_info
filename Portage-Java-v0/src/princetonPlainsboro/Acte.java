@@ -9,9 +9,11 @@ public class Acte {
     private String type; 
     private String observation; 
     
-    public Acte(Code code, int coef) {
+    public Acte(Code code, int coef, String typeActe, String observation) {
         this.code = code;
         this.coef = coef;
+        this.type = typeActe; 
+        this.observation = observation; 
         }
     
     public String toString() {

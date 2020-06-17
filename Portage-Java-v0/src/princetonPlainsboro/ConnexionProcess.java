@@ -33,7 +33,6 @@ public class ConnexionProcess {
 
         this.success = false;
         JOptionPane jop1 = new JOptionPane();
-
         int i = 0;
         while (i < liste_medecin.size() && !liste_medecin.get(i).getLogin().equals(login)) {
             i++;

@@ -6,16 +6,17 @@ import projet.ui.*;
 class Test {
 
     public static void main(String[] args) {
-        LectureXML test = new LectureXML("dossiers.xml");
-        DossierMedical dm = test.getDossier();
+        //LectureXML test = new LectureXML("dossiers.xml");
+        //DossierMedical dm = test.getDossier();
+        DossierMedical dm = new DossierMedical(); 
         //dm.afficher();
-        /*Date date = new Date(13, 06, 1978); 
+        Date date = new Date(13, 06, 1978); 
 
-        System.out.println("\n********\n");
+        //System.out.println("\n********\n");*/
 
         Patient p1 = new Patient("Bole", "Pat", date, "18 rue de la fac, grenoble", "0656565656", "1298129172");
         dm.ajouterPatient(p1);
-        System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
+        /*System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
 
         System.out.println("\n********\n");
 
@@ -47,9 +48,10 @@ class Test {
          
 
 
-        //FenetrePatMed fpm = new FenetrePatMed(dm); 
-        new Connexion("test", dm).setVisible(true);
-        
+        FenetrePatMed fpm = new FenetrePatMed(dm);
+        NouvelleFicheDeSoins nfds = new NouvelleFicheDeSoins("Nouvelle fiche de soins", dm, p1); 
+        //new Connexion("test", dm).setVisible(true);
+        //new AcceuilAdmin("Accueil", dm);
         /*for(int i = 0; i<dm.getListe_patient().size();i++){
                 System.out.println(dm.getListe_patient().get(i).getNom());
         }
