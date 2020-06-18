@@ -122,7 +122,7 @@ public class LectureXML {
                         }
                         if (parser.getLocalName().equals("patient")) {
                             patientCourant = new Patient(nomCourant, prenomCourant, dateNaissanceCourant,
-                                    adresseCourant, numTelCourant, numeroSSCourant);
+                                    numTelCourant, adresseCourant, numeroSSCourant);
                             dossierCourant.ajouterPatient(patientCourant);
                         }
                         if (parser.getLocalName().equals("prenom")) {
