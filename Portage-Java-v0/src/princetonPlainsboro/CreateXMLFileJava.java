@@ -93,10 +93,10 @@ public class CreateXMLFileJava {
 
                 //specialite patient
                 Element dateNaissance = document.createElement("dateNaissance");
-                dateNaissance.appendChild(document.createTextNode(f.getPatient().getDateDeNaissance().toString()));
+                dateNaissance.appendChild(document.createTextNode(f.getPatient().getDateDeNaissance().toXml()));
                 patient.appendChild(dateNaissance);
 
-                //numTel patient
+                //adresse patient
                 Element adresse = document.createElement("adresse");
                 adresse.appendChild(document.createTextNode(f.getPatient().getAdresse()));
                 patient.appendChild(adresse);

@@ -11,9 +11,9 @@
 <patient>
 <nom>Track</nom>
 <prenom>Pat</prenom>
-<dateNaissance>1950/7/8</dateNaissance>
-<adresse>0623232323</adresse>
-<numTel>18 rue du pont, Grenoble</numTel>
+<dateNaissance>8-7-1950</dateNaissance>
+<adresse>18 rue du pont, Grenoble</adresse>
+<numTel>0623232323</numTel>
 <numSS>150072531111426</numSS>
 </patient>
 <acte>
@@ -40,9 +40,9 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Pat</prenom>
-<dateNaissance>2000/12/23</dateNaissance>
-<adresse>0601010101</adresse>
-<numTel>1 Avenue Lafayette, Grenoble</numTel>
+<dateNaissance>23-12-2000</dateNaissance>
+<adresse>1 Avenue Lafayette, Grenoble</adresse>
+<numTel>0601010101</numTel>
 <numSS>100122531111426</numSS>
 </patient>
 <acte>
@@ -65,9 +65,9 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Maggy</prenom>
-<dateNaissance>1995/1/3</dateNaissance>
-<adresse>0667676767</adresse>
-<numTel>18 chemin de sable, Grenoble</numTel>
+<dateNaissance>3-1-1995</dateNaissance>
+<adresse>18 chemin de sable, Grenoble</adresse>
+<numTel>0667676767</numTel>
 <numSS>195112531111426</numSS>
 </patient>
 <acte>
@@ -86,9 +86,9 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Maggy</prenom>
-<dateNaissance>1988/0/18</dateNaissance>
-<adresse>0698989898</adresse>
-<numTel>18 rue du bois, Grenoble</numTel>
+<dateNaissance>18-0-1988</dateNaissance>
+<adresse>18 rue du bois, Grenoble</adresse>
+<numTel>0698989898</numTel>
 <numSS>188022531111426</numSS>
 </patient>
 <acte>
@@ -107,9 +107,9 @@
 <patient>
 <nom>Epi</nom>
 <prenom>Fanie</prenom>
-<dateNaissance>2002/5/5</dateNaissance>
-<adresse>0678674534</adresse>
-<numTel>18 Avenue des hommes, Grenoble</numTel>
+<dateNaissance>5-5-2002</dateNaissance>
+<adresse>18 Avenue des hommes, Grenoble</adresse>
+<numTel>0678674534</numTel>
 <numSS>102052531111426</numSS>
 </patient>
 <acte>
@@ -132,9 +132,9 @@
 <patient>
 <nom>Henfayitte</nom>
 <prenom>Melusine</prenom>
-<dateNaissance>1999/1/1</dateNaissance>
-<adresse>0690787689</adresse>
-<numTel>18 rue du bonheur, Grenoble</numTel>
+<dateNaissance>1-1-1999</dateNaissance>
+<adresse>18 rue du bonheur, Grenoble</adresse>
+<numTel>0690787689</numTel>
 <numSS>199012531111426</numSS>
 </patient>
 <acte>
