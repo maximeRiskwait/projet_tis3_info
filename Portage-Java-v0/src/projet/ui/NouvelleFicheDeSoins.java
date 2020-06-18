@@ -331,7 +331,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     }//GEN-LAST:event_validerActionPerformed
 
     private void addActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActeActionPerformed
-        new NouvelActe("Nouvel Acte", getDm(), this, p);
+        new NouvelActe("Nouvel Acte", dm, this, p);
     }//GEN-LAST:event_addActeActionPerformed
 
     private void dateActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActeActionPerformed
@@ -341,13 +341,13 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     public Medecin obtenirMedecin(String nom, String prenom) {
         Medecin m;
         int i = 0;
-        while (i < getDm().getListe_medecin().size()
+        while (i < dm.getListe_medecin().size()
                 && !nom.equals(dm.getListe_medecin().get(i).getNom())
                 && !prenom.equals(dm.getListe_medecin().get(i).getPrenom())) {
             i++;
         }
-        if (i < getDm().getListe_patient().size()) {
-            m = getDm().getListe_medecin().get(i);
+        if (i < dm.getListe_patient().size()) {
+            m = dm.getListe_medecin().get(i);
         } else {
             m = null;
         }
@@ -376,13 +376,6 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     private javax.swing.JTable tabActe;
     private javax.swing.JButton valider;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the dm
-     */
-    public DossierMedical getDm() {
-        return dm;
-    }
 
     /**
      * @return the fds

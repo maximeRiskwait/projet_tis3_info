@@ -5,6 +5,7 @@
  */
 package projet.ui;
 
+import javax.swing.JOptionPane;
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.Patient;
 
@@ -125,7 +126,13 @@ public class AcceuilAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new AffichageFichePatient(obtenirPatient(jTextField1.getText()));
+        try{
+            new AffichageFichePatient(obtenirPatient(jTextField1.getText()));
+        }catch (NullPointerException e ){
+            JOptionPane jop1 = new JOptionPane();
+            jop1.showMessageDialog(null, "Numéro de sécurité sociale invalide",
+                        "ERREUR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -136,10 +143,8 @@ public class AcceuilAdmin extends javax.swing.JFrame {
     public Patient obtenirPatient(String numSS){
         Patient p; 
         int i =0; 
-        System.out.println("test");
         while(i<dm.getListe_patient().size() &&
                 !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())){
-            System.out.println("num : " + dm.getListe_patient().get(i).getNumSecuSociale());
             i++; 
         }
         if(i<dm.getListe_patient().size()){

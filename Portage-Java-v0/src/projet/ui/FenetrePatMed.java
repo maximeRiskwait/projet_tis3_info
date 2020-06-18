@@ -6,40 +6,39 @@
 package projet.ui;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import princetonPlainsboro.DossierMedical; 
+import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.Medecin;
 import princetonPlainsboro.Patient;
+
 /**
  *
  * @author maximeriskwait
  */
 public class FenetrePatMed extends javax.swing.JFrame {
 
-    private ArrayList<Patient> liste_patient; 
-    private ArrayList<Medecin> liste_medecin; 
-    private DossierMedical dm; 
-    private String[] liste; 
+    private ArrayList<Patient> liste_patient;
+    private ArrayList<Medecin> liste_medecin;
+    private DossierMedical dm;
+    private String[] liste;
 
-    
-    
     public FenetrePatMed(DossierMedical dm) {
         initComponents();
-        
-        this.liste_patient = dm.getListe_patient(); 
-        this.liste_medecin = dm.getListe_medecin(); 
-        this.dm = dm; 
-        this.liste = new String[6]; 
-       
-        
+
+        this.liste_patient = dm.getListe_patient();
+        this.liste_medecin = dm.getListe_medecin();
+        this.dm = dm;
+        this.liste = new String[6];
+
         this.liste[0] = "Nom";
-        this.liste[1] = "Prénom"; 
+        this.liste[1] = "Prénom";
         this.liste[2] = "Date de naissance";
-        this.liste[3] = "Numéro tel"; 
-        this.liste[4] = "Adresse"; 
-        this.liste[5] = "Numéro SS"; 
-        
-        Object  [][] data = new Object[this.liste_patient.size()][6];
+        this.liste[3] = "Numéro tel";
+        this.liste[4] = "Adresse";
+        this.liste[5] = "Numéro SS";
+
+        Object[][] data = new Object[this.liste_patient.size()][6];
         for (int i = 0; i < liste_patient.size(); i++) {
             data[i][0] = liste_patient.get(i).getNom();
             data[i][1] = liste_patient.get(i).getPrenom();
@@ -47,17 +46,16 @@ public class FenetrePatMed extends javax.swing.JFrame {
             data[i][3] = liste_patient.get(i).getAdresse();
             data[i][4] = liste_patient.get(i).getNumTel();
             data[i][5] = liste_patient.get(i).getNumSecuSociale();
-            
+
         }
         tablePat.setModel(new DefaultTableModel(data, liste));
-        
-        
-        this.liste = new String[4]; 
+
+        this.liste = new String[4];
         this.liste[0] = "Nom";
-        this.liste[1] = "Prénom"; 
-        this.liste[2] = "Spécialité"; 
-        this.liste[3] = "Numéro tel"; 
-        
+        this.liste[1] = "Prénom";
+        this.liste[2] = "Spécialité";
+        this.liste[3] = "Numéro tel";
+
         data = new Object[this.liste_medecin.size()][6];
         for (int i = 0; i < liste_medecin.size(); i++) {
             data[i][0] = liste_medecin.get(i).getNom();
@@ -66,9 +64,9 @@ public class FenetrePatMed extends javax.swing.JFrame {
             data[i][3] = liste_medecin.get(i).getNumTel();
         }
         tableMed.setModel(new DefaultTableModel(data, liste));
-        
-        revalidate(); 
-        this.setVisible(true); 
+
+        revalidate();
+        this.setVisible(true);
     }
 
     /**
@@ -100,6 +98,8 @@ public class FenetrePatMed extends javax.swing.JFrame {
             }}
             ;
             rechercheMed = new javax.swing.JTextField();
+            jButton3 = new javax.swing.JButton();
+            jButton4 = new javax.swing.JButton();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setTitle("Médical");
@@ -151,7 +151,12 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 }
             });
 
-            jButton1.setText("jButton1");
+            jButton1.setText("Rechercher");
+            jButton1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton1ActionPerformed(evt);
+                }
+            });
 
             jButton2.setText("Déconnexion");
             jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -211,10 +216,24 @@ public class FenetrePatMed extends javax.swing.JFrame {
             spMed.setViewportView(tableMed);
 
             rechercheMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-            rechercheMed.setText("Rechercher un medecin");
+            rechercheMed.setText("Nom+prénom");
             rechercheMed.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     rechercheMedActionPerformed(evt);
+                }
+            });
+
+            jButton3.setText("Rechercher");
+            jButton3.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton3ActionPerformed(evt);
+                }
+            });
+
+            jButton4.setText("Déconnexion");
+            jButton4.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton4ActionPerformed(evt);
                 }
             });
 
@@ -228,7 +247,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
                         .addComponent(spMed, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletMedecinLayout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(jButton3)
+                            .addGap(66, 66, 66)
+                            .addComponent(jButton4)))
                     .addContainerGap())
             );
             ongletMedecinLayout.setVerticalGroup(
@@ -237,8 +260,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(spMed, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3)
+                        .addComponent(jButton4))
+                    .addContainerGap(36, Short.MAX_VALUE))
             );
 
             ongletPatMed.addTab("Médecin", ongletMedecin);
@@ -268,29 +294,29 @@ public class FenetrePatMed extends javax.swing.JFrame {
     }//GEN-LAST:event_tablePatPropertyChange
 
     private void ongletPatMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ongletPatMedMouseClicked
-        
-        
+
+
     }//GEN-LAST:event_ongletPatMedMouseClicked
 
     private void tablePatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePatMouseClicked
-        
-        DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
-        int selectedRowIndex = tablePat.getSelectedRow(); 
-        String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
+
+        DefaultTableModel model = (DefaultTableModel) tablePat.getModel();
+        int selectedRowIndex = tablePat.getSelectedRow();
+        String numSS = model.getValueAt(selectedRowIndex, 5).toString();
     }//GEN-LAST:event_tablePatMouseClicked
 
     private void afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherActionPerformed
-        DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
-        int selectedRowIndex = tablePat.getSelectedRow(); 
-        
-        String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
-        
+        DefaultTableModel model = (DefaultTableModel) tablePat.getModel();
+        int selectedRowIndex = tablePat.getSelectedRow();
+
+        String numSS = model.getValueAt(selectedRowIndex, 5).toString();
+
         new UiDMP(dm, obtenirPatient(numSS));
     }//GEN-LAST:event_afficherActionPerformed
 
     private void tableMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedMouseClicked
-        if (evt.getClickCount()==2){
-            new affichageDetailsMedecin(dm, liste_medecin.get(tableMed.getSelectedRow()));
+        if (evt.getClickCount() == 2) {
+            new affichageDetailsMedecin("Détail médecin", dm, liste_medecin.get(tableMed.getSelectedRow()));
         }
     }//GEN-LAST:event_tableMedMouseClicked
 
@@ -298,6 +324,34 @@ public class FenetrePatMed extends javax.swing.JFrame {
         this.dispose();
         new Connexion("Connexion", dm);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            new AffichageFichePatient(obtenirPatient(recherchePat.getText()));
+        } catch (NullPointerException e) {
+            JOptionPane jop1 = new JOptionPane();
+            jop1.showMessageDialog(null, "Numéro de sécurité sociale invalide",
+                    "ERREUR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String[] tabMed = new String[2];
+        tabMed = rechercheMed.getText().split("\\+");
+        try {
+            new affichageDetailsMedecin("Détail médecin", dm, obtenirMedecin(tabMed[0], tabMed[1]));
+        } catch (NullPointerException e) {
+            JOptionPane jop1 = new JOptionPane();
+            jop1.showMessageDialog(null, "Ce médecin n'existe pas !",
+                    "ERREUR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        new Connexion("Connexion", dm);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,26 +388,47 @@ public class FenetrePatMed extends javax.swing.JFrame {
             }
         });
     }
-    
-    public Patient obtenirPatient(String numSS){
-        Patient p; 
-        int i =0; 
-        while(i<dm.getListe_patient().size() &&
-                !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())){
-            i++; 
+
+    public Patient obtenirPatient(String numSS) {
+        Patient p;
+        int i = 0;
+        while (i < dm.getListe_patient().size()
+                && !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())) {
+            i++;
         }
-        if(i<dm.getListe_patient().size()){
-            p = dm.getListe_patient().get(i); 
+        if (i < dm.getListe_patient().size()) {
+            p = dm.getListe_patient().get(i);
+        } else {
+            p = null;
         }
-        else p = null; 
-        
-        return p; 
+
+        return p;
     }
+
+    public Medecin obtenirMedecin(String nom, String prenom) {
+        Medecin m;
+        int i = 0;
+        while (i < dm.getListe_medecin().size()
+                && !nom.equals(dm.getListe_medecin().get(i).getNom())
+                && !prenom.equals(dm.getListe_medecin().get(i).getPrenom())) {
+            i++;
+        }
+        if (i < dm.getListe_patient().size()) {
+            m = dm.getListe_medecin().get(i);
+        } else {
+            m = null;
+        }
+
+        return m;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton afficher;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel ongletMedecin;
     private javax.swing.JTabbedPane ongletPatMed;
     private javax.swing.JPanel ongletPatient;

@@ -32,16 +32,12 @@ public class ConnexionProcess {
     public boolean connexionReussie() {
 
         this.success = false;
-        JOptionPane jop1 = new JOptionPane();
         int i = 0;
         while (i < liste_medecin.size() && !liste_medecin.get(i).getLogin().equals(login)) {
             i++;
         }
         if (i == liste_medecin.size()) {
             success = false;
-            jop1.showMessageDialog(null, "ERREUR ! Le nom d'utilisateur ou "
-                    + "le mot de passe sont INCORRECT",
-                    "ERREUR", JOptionPane.ERROR_MESSAGE);
         } else {
             if (liste_medecin.get(i).getMdp().equals(password)) { // on vérifie maintenant que le password est bien correct
                 success = true;
