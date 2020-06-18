@@ -55,6 +55,9 @@ public class UiDMP extends javax.swing.JFrame {
         }
         this.tabFiche.setModel(new DefaultTableModel(data, liste));
         
+        this.coutTotalPatient.setText(coutTotalPatient(dm, p)); 
+        
+        
     }
 
     /**
@@ -84,6 +87,8 @@ public class UiDMP extends javax.swing.JFrame {
         tabFiche = new javax.swing.JTable();
         addFdSoins = new javax.swing.JButton();
         butOK = new javax.swing.JButton();
+        labcoutPatient = new javax.swing.JLabel();
+        coutTotalPatient = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dossier médical Patient");
@@ -149,6 +154,10 @@ public class UiDMP extends javax.swing.JFrame {
             }
         });
 
+        labcoutPatient.setText("Coût total patient : ");
+
+        coutTotalPatient.setText("00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,6 +189,10 @@ public class UiDMP extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(addFdSoins)
+                .addGap(94, 94, 94)
+                .addComponent(labcoutPatient)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(coutTotalPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(butOK))
         );
@@ -213,7 +226,10 @@ public class UiDMP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spFdSoins, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addFdSoins)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addFdSoins)
+                    .addComponent(labcoutPatient)
+                    .addComponent(coutTotalPatient))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,12 +309,22 @@ public class UiDMP extends javax.swing.JFrame {
                 this.liste_fiche.add(fs);
             }
         }
+        this.coutTotalPatient.setText(coutTotalPatient(dm,p)); 
+    }
+    
+    public String coutTotalPatient(DossierMedical dm, Patient p){
+        String s = ""; 
+        Double b = new Double(dm.coutPatient(p)); 
+        s = b.toString(); 
+        
+        return s; 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFdSoins;
     private javax.swing.JTextArea adresse;
     private javax.swing.JButton butOK;
+    private javax.swing.JLabel coutTotalPatient;
     private javax.swing.JLabel ddNPat;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labAdresse;
@@ -307,6 +333,7 @@ public class UiDMP extends javax.swing.JFrame {
     private javax.swing.JLabel labNumSecu;
     private javax.swing.JLabel labNumTel;
     private javax.swing.JLabel labPrenomPat;
+    private javax.swing.JLabel labcoutPatient;
     private javax.swing.JLabel nomPat;
     private javax.swing.JLabel numSecuSoc;
     private javax.swing.JLabel numTelephone;

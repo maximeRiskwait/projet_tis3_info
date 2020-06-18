@@ -35,8 +35,8 @@ public class FenetrePatMed extends javax.swing.JFrame {
         this.liste[0] = "Nom";
         this.liste[1] = "Prénom"; 
         this.liste[2] = "Date de naissance";
-        this.liste[3] = "Numéro tel"; 
-        this.liste[4] = "Adresse"; 
+        this.liste[3] = "Adresse";
+        this.liste[4] = "Numéro tel"; 
         this.liste[5] = "Numéro SS"; 
         
         Object  [][] data = new Object[this.liste_patient.size()][6];
