@@ -58,7 +58,7 @@ public class AffichageActe extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         observation = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labType.setText("Type :");
 

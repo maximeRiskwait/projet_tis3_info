@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 
 public class CreateXMLFileJava {
 
-    public static final String xmlFilePath = "src/donnees/test.xml";
+    public static final String xmlFilePath = "src/donnees/dossiers.xml";
     private DossierMedical dm;
 
     public static void ecritureDossier(DossierMedical dm) {

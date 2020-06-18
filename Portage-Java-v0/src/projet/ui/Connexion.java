@@ -27,6 +27,7 @@ public class Connexion extends javax.swing.JFrame {
         super(title);
         this.dm = dm;
         initComponents();
+        this.setVisible(true);
     }
 
     /**

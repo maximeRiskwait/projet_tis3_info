@@ -90,6 +90,8 @@ public class FenetrePatMed extends javax.swing.JFrame {
         };
         recherchePat = new javax.swing.JTextField();
         afficher = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         ongletMedecin = new javax.swing.JPanel();
         spMed = new javax.swing.JScrollPane();
         tableMed = new javax.swing.JTable(){
@@ -149,6 +151,15 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 }
             });
 
+            jButton1.setText("jButton1");
+
+            jButton2.setText("Déconnexion");
+            jButton2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton2ActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout ongletPatientLayout = new javax.swing.GroupLayout(ongletPatient);
             ongletPatient.setLayout(ongletPatientLayout);
             ongletPatientLayout.setHorizontalGroup(
@@ -159,8 +170,12 @@ public class FenetrePatMed extends javax.swing.JFrame {
                         .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                         .addGroup(ongletPatientLayout.createSequentialGroup()
                             .addComponent(afficher)
+                            .addGap(186, 186, 186)
+                            .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton2)))
                     .addContainerGap())
             );
             ongletPatientLayout.setVerticalGroup(
@@ -168,15 +183,13 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 .addGroup(ongletPatientLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(spPat, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(ongletPatientLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(43, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ongletPatientLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(afficher)
-                            .addGap(28, 28, 28))))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(afficher)
+                        .addComponent(recherchePat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))
+                    .addGap(28, 28, 28))
             );
 
             ongletPatMed.addTab("Patient", ongletPatient);
@@ -263,11 +276,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel)tablePat.getModel(); 
         int selectedRowIndex = tablePat.getSelectedRow(); 
-        //System.out.println(selectedRowIndex);
         String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
-        System.out.println(numSS);
-        
-        
     }//GEN-LAST:event_tablePatMouseClicked
 
     private void afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherActionPerformed
@@ -276,7 +285,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         String numSS = model.getValueAt(selectedRowIndex, 5).toString(); 
         
-        AffichageFichePatient fp = new AffichageFichePatient(obtenirPatient(numSS));
+        new UiDMP(dm, obtenirPatient(numSS));
     }//GEN-LAST:event_afficherActionPerformed
 
     private void tableMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedMouseClicked
@@ -284,6 +293,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
             new affichageDetailsMedecin(dm, liste_medecin.get(tableMed.getSelectedRow()));
         }
     }//GEN-LAST:event_tableMedMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        new Connexion("Connexion", dm);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,10 +338,8 @@ public class FenetrePatMed extends javax.swing.JFrame {
     public Patient obtenirPatient(String numSS){
         Patient p; 
         int i =0; 
-        System.out.println("test");
         while(i<dm.getListe_patient().size() &&
                 !numSS.equals(dm.getListe_patient().get(i).getNumSecuSociale())){
-            System.out.println("num : " + dm.getListe_patient().get(i).getNumSecuSociale());
             i++; 
         }
         if(i<dm.getListe_patient().size()){
@@ -340,6 +352,8 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton afficher;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel ongletMedecin;
     private javax.swing.JTabbedPane ongletPatMed;
     private javax.swing.JPanel ongletPatient;

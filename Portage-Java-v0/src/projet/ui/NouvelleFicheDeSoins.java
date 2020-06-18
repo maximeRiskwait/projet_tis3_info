@@ -13,6 +13,7 @@ import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.Acte;
+import princetonPlainsboro.CreateXMLFileJava;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.Medecin;
 
@@ -310,6 +311,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
             u.refreshListe(u.getListe_fiche());
             u.getJLabel2().setText(u.coutTotalPatient(dm, p));
             dispose();
+            CreateXMLFileJava.ecritureDossier(dm);
         } else {
             jLabel1.setText("Ce médecin n'existe pas !");
             jLabel1.setVisible(true);
