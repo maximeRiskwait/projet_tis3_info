@@ -55,8 +55,19 @@ public class UiDMP extends javax.swing.JFrame {
         }
         this.tabFiche.setModel(new DefaultTableModel(data, liste));
         this.adresse.setEditable(false);
+        
+        this.jLabel2.setText(coutTotalPatient(dm, p));
+
     }
 
+    public String coutTotalPatient(DossierMedical dm, Patient p){
+        String s = ""; 
+        Double b = new Double(dm.coutPatient(p)); 
+        s = b.toString(); 
+
+        return s; 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +95,8 @@ public class UiDMP extends javax.swing.JFrame {
         tabFiche = new javax.swing.JTable();
         addFdSoins = new javax.swing.JButton();
         butOK = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dossier médical Patient");
@@ -149,6 +162,10 @@ public class UiDMP extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Coût :");
+
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,6 +197,10 @@ public class UiDMP extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(addFdSoins)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(butOK))
         );
@@ -213,7 +234,10 @@ public class UiDMP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spFdSoins, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addFdSoins)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addFdSoins)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,6 +317,8 @@ public class UiDMP extends javax.swing.JFrame {
                 this.liste_fiche.add(fs);
             }
         }
+        this.jLabel2.setText(coutTotalPatient(dm, p));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -300,6 +326,8 @@ public class UiDMP extends javax.swing.JFrame {
     private javax.swing.JTextArea adresse;
     private javax.swing.JButton butOK;
     private javax.swing.JLabel ddNPat;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labAdresse;
     private javax.swing.JLabel labDdN;
