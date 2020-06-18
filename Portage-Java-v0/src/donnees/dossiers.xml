@@ -23,11 +23,11 @@
     </acte>
     <acte>
         <code>ORT</code>
-        <coef>50</coef>
+        <coef>2</coef>
     </acte>
     <acte>
         <code>PRO</code>
-        <coef>150</coef>
+        <coef>1</coef>
     </acte>
   </ficheDeSoins>
   
@@ -53,7 +53,7 @@
     </acte>
     <acte>
         <code>KC</code>
-        <coef>120</coef>
+        <coef>1</coef>
     </acte>
   </ficheDeSoins>
 
@@ -123,7 +123,7 @@
     </acte>
     <acte>
         <code>KFA</code>
-        <coef>72</coef>
+        <coef>3</coef>
     </acte>
   </ficheDeSoins>
     
@@ -149,7 +149,7 @@
     </acte>
     <acte>
         <code>KFA</code>
-        <coef>72</coef>
+        <coef>2</coef>
     </acte>
     <acte>
         <code>K</code>
@@ -157,15 +157,15 @@
     </acte>
     <acte>
         <code>KE</code>
-        <coef>60</coef>
+        <coef>4</coef>
     </acte>
     <acte>
         <code>ORT</code>
-        <coef>85</coef>
+        <coef>1</coef>
     </acte>
     <acte>
         <code>PRO</code>
-        <coef>850</coef>
+        <coef>1</coef>
     </acte>
   </ficheDeSoins>
   

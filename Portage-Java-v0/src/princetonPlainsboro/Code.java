@@ -31,7 +31,7 @@ public enum Code {
     
     // m�thodes :
     public String toString() {
-        return super.toString() + " : " + getLibelle() + ", cout=" + cout + " euros";
+        return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
         }
     
     // calcule le prix pour un coefficient donne :

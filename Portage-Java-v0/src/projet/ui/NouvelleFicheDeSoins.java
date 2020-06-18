@@ -6,6 +6,7 @@
 package projet.ui;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -47,7 +48,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         this.m = m;
         this.liste_acte = new ArrayList<>();
         this.u = u;
-        
+
         nomPat2.setText(this.p.getNom());
         //prenomPat.setText(this.p.getNom());
         prenomPat.setText(this.p.getPrenom());
@@ -60,22 +61,22 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         tabActe.setModel(new DefaultTableModel(new Object[5][2], liste));
     }
 
-    public void refreshList(ArrayList<Acte> liste_acte){
+    public void refreshList(ArrayList<Acte> liste_acte) {
         String[] liste = new String[2];
         liste[0] = "Code";
         liste[1] = "Cout";
-        
-        Object  [][] data = new Object[this.liste_acte.size()][2];
+
+        Object[][] data = new Object[this.liste_acte.size()][2];
         for (int i = 0; i < liste_acte.size(); i++) {
             data[i][0] = liste_acte.get(i).getCode().codeToString();
             Double b = new Double(liste_acte.get(i).cout());
             data[i][1] = b.toString();
-            
+
         }
         this.t = new DefaultTableModel(data, liste);
         tabActe.setModel(t);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,7 +109,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         };
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nouvelle fiche de soins ");
 
         labNom.setText("Nom:");
@@ -292,6 +293,9 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         String[] tab = new String[3];
         tab = this.dateActe.getText().split("/");
         // JJ/MM/AA
+
+        
+        try {
         Date dateActe = new Date(Integer.parseInt(tab[0]), Integer.parseInt(tab[1]), Integer.parseInt(tab[2]));
 
         String[] tabMed = new String[2];
@@ -300,22 +304,28 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         m = obtenirMedecin(tabMed[0], tabMed[1]);
 
         if (m != null) {
-            fds = new FicheDeSoins(p, m, dateActe);
+            
+                fds = new FicheDeSoins(p, m, dateActe);
 
-            for (int i = 0; i < liste_acte.size(); i++) {
-                fds.ajouterActe(liste_acte.get(i));
+                for (int i = 0; i < liste_acte.size(); i++) {
+                    fds.ajouterActe(liste_acte.get(i));
 
-            }
-            dm.ajouterFiche(fds);
-            u.getListe_fiche().add(fds);
-            u.refreshListe(u.getListe_fiche());
-            u.getJLabel2().setText(u.coutTotalPatient(dm, p));
-            dispose();
-            CreateXMLFileJava.ecritureDossier(dm);
+                }
+                dm.ajouterFiche(fds);
+                u.getListe_fiche().add(fds);
+                u.refreshListe(u.getListe_fiche());
+                u.getJLabel2().setText(u.coutTotalPatient(dm, p));
+                dispose();
+                CreateXMLFileJava.ecritureDossier(dm);
         } else {
             jLabel1.setText("Ce médecin n'existe pas !");
             jLabel1.setVisible(true);
 
+        }
+        }catch(NumberFormatException  e){
+            JOptionPane jop1 = new JOptionPane();
+            jop1.showMessageDialog(null, "Date de naissance pas valide",
+                        "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_validerActionPerformed
@@ -401,8 +411,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     public ArrayList<Acte> getListe_acte() {
         return liste_acte;
     }
-    
-    public JTable getTabAct(){
+
+    public JTable getTabAct() {
         return tabActe;
     }
 }

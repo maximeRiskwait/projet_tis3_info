@@ -29,7 +29,6 @@ public class Acte {
     }
 
     public double cout() {
-        System.out.println(coef);
         return code.calculerCout(coef);
     }
 

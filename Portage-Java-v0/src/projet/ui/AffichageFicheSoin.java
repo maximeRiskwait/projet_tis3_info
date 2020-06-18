@@ -48,7 +48,7 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         }
         
         this.listActe.setModel(model); 
-        Double b = new Double(coutFiche(liste_acte)); 
+        Double b = coutFiche(liste_acte); 
         this.coutFiche.setText(b.toString()); 
         
         
@@ -293,8 +293,6 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         
         for(int i = 0; i < la.size(); i++){
             cout += la.get(i).cout();  
-            System.out.println(la.get(i).cout());  
-            System.out.println(cout);
         }
         
         return cout; 
