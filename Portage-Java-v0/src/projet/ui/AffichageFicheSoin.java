@@ -111,6 +111,11 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listActe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listActeMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(listActe);
 
         labComMedecin1.setText("Date :");
@@ -119,6 +124,11 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         dateFs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Coût :");
 
@@ -222,6 +232,16 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void listActeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listActeMouseClicked
+        if (evt.getClickCount()==2){
+            new AffichageActe(liste_acte.get(listActe.getSelectedIndex()));
+        }
+    }//GEN-LAST:event_listActeMouseClicked
 
     /**
      * @param args the command line arguments

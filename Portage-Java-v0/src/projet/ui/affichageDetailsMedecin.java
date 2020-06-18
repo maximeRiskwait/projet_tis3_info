@@ -32,19 +32,23 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
         
         this.dm = dm; 
         this.m = m; 
-        this.liste = new String[3]; 
+        this.liste = new String[2]; 
+        this.jLabel2.setText(m.getNom());
+        this.jLabel4.setText(m.getPrenom());
+        this.jLabel6.setText(m.getSpecialite());
         
+        liste_patient = new ArrayList<>();
         ajouterPatient(m); 
         
         this.liste[0] = "Patient";
-        this.liste[1] = "Date"; 
-        this.liste[2] = "Coût"; 
-        
+        this.liste[1] = "Coût"; 
+        //System.out.println(liste_patient.size());
         Object  [][] data = new Object[liste_patient.size()][this.liste.length];
         for (int i = 0; i < liste_patient.size(); i++) {
             data[i][0] = liste_patient.get(i).getNom() + " "
                     + liste_patient.get(i).getPrenom();
-            //data[i][1] = 
+            Double d = dm.coutPatient(liste_patient.get(i));
+            data[i][1] = d.toString();
             //data[i][2] = liste_patient.get(i).getDate().toString();
             
         }
@@ -72,7 +76,7 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("NOM :");
 
@@ -214,6 +218,7 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
                 if (!liste_patient.contains(p)) {
                     liste_patient.add(p);
                 }
+                System.out.println("1");
             }
         }    
     }

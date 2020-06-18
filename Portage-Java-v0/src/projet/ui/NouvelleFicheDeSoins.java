@@ -28,11 +28,12 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     private Medecin m;
     private ArrayList<Acte> liste_acte;
     private DefaultTableModel t;
+    private UiDMP u;
 
     /**
      * Creates new form FicheDeSoins
      */
-    public NouvelleFicheDeSoins(String title, DossierMedical dm, Patient p) {
+    public NouvelleFicheDeSoins(String title, DossierMedical dm, Patient p, UiDMP u) {
         super(title);
         initComponents();
         this.setSize(650, 450);
@@ -44,6 +45,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         this.p = p;
         this.m = m;
         this.liste_acte = new ArrayList<>();
+        this.u = u;
         
         nomPat2.setText(this.p.getNom());
         //prenomPat.setText(this.p.getNom());
@@ -303,7 +305,10 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                 fds.ajouterActe(liste_acte.get(i));
 
             }
-
+            dm.ajouterFiche(fds);
+            u.getListe_fiche().add(fds);
+            u.refreshListe(u.getListe_fiche());
+            u.getJLabel2().setText(u.coutTotalPatient(dm, p));
             dispose();
         } else {
             jLabel1.setText("Ce médecin n'existe pas !");

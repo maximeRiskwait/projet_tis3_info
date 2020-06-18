@@ -190,6 +190,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
                     "NOM", "Prénom", "Spécialité"
                 }
             ));
+            tableMed.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    tableMedMouseClicked(evt);
+                }
+            });
             spMed.setViewportView(tableMed);
 
             rechercheMed.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
@@ -273,6 +278,12 @@ public class FenetrePatMed extends javax.swing.JFrame {
         
         AffichageFichePatient fp = new AffichageFichePatient(obtenirPatient(numSS));
     }//GEN-LAST:event_afficherActionPerformed
+
+    private void tableMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedMouseClicked
+        if (evt.getClickCount()==2){
+            new affichageDetailsMedecin(dm, liste_medecin.get(tableMed.getSelectedRow()));
+        }
+    }//GEN-LAST:event_tableMedMouseClicked
 
     /**
      * @param args the command line arguments
