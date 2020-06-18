@@ -6,55 +6,73 @@
 package projet.ui;
 
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.FicheDeSoins;
-import princetonPlainsboro.Patient; 
-import princetonPlainsboro.Acte; 
+import princetonPlainsboro.Patient;
+import princetonPlainsboro.Acte;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.Medecin;
+
 /**
  *
  * @author melin
  */
 public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
-    private DossierMedical dm; 
-    private FicheDeSoins fds; 
+    private DossierMedical dm;
+    private FicheDeSoins fds;
     private Patient p;
-    private Medecin m; 
+    private Medecin m;
     private ArrayList<Acte> liste_acte;
-    String[] liste; 
-    
+    private DefaultTableModel t;
+
     /**
      * Creates new form FicheDeSoins
      */
     public NouvelleFicheDeSoins(String title, DossierMedical dm, Patient p) {
         super(title);
         initComponents();
-        this.setSize(650,450);
+        this.setSize(650, 450);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        jLabel1.setVisible(false);
+        tabActe.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.dm = dm;
+        this.p = p;
+        this.m = m;
+        this.liste_acte = new ArrayList<>();
         
-        liste = new String[2]; 
-        
-        this.liste[0] = "Code";
-        this.liste[1] = "cout"; 
-         
+        nomPat2.setText(this.p.getNom());
+        //prenomPat.setText(this.p.getNom());
+        prenomPat.setText(this.p.getPrenom());
+        dateNaissancePat.setText(this.p.getDateDeNaissance().toString());
+
+        String[] liste = new String[2];
+        liste[0] = "Code";
+        liste[1] = "Cout";
+
+        tabActe.setModel(new DefaultTableModel(new Object[5][2], liste));
+    }
+
+    public void refreshList(ArrayList<Acte> liste_acte){
+        String[] liste = new String[2];
+        liste[0] = "Code";
+        liste[1] = "Cout";
         
         Object  [][] data = new Object[this.liste_acte.size()][2];
         for (int i = 0; i < liste_acte.size(); i++) {
-            data[i][0] = liste_acte.get(i).getCode();
+            data[i][0] = liste_acte.get(i).getCode().codeToString();
             Double b = new Double(liste_acte.get(i).cout());
             data[i][1] = b.toString();
             
         }
-        
-        tabActe.setModel(new DefaultTableModel(data, liste));
-        
+        this.t = new DefaultTableModel(data, liste);
+        tabActe.setModel(t);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,7 +98,12 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         prenomPat = new javax.swing.JLabel();
         nomPat2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tabActe = new javax.swing.JTable();
+        tabActe = new javax.swing.JTable(){
+            public boolean isCellEditable(int d, int c){
+                return false;
+            }
+        };
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nouvelle fiche de soins ");
@@ -151,6 +174,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tabActe);
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -168,7 +193,8 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                     .addComponent(labDdN)
                     .addComponent(labMed)
                     .addComponent(dataMed, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateNaissancePat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateNaissancePat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -208,8 +234,13 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
                     .addComponent(dataMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prenomPat, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(4, 4, 4)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -251,52 +282,62 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
         // cr�er une FicheDeSoins avec des getText puis l'ajouter a la liste / au xml si on est chaud
-       this.nomPat2.setText(getP().getNom()); 
-       this.prenomPat.setText(getP().getPrenom());
-       this.dateNaissancePat.setText(getP().getDateDeNaissance().toString());
-        
-       String[] tab = this.dateActe.getText().split("/"); 
-       // JJ/MM/AA
-       Date dateActe = new Date(Integer.parseInt(tab[0]),Integer.parseInt(tab[1]),Integer.parseInt(tab[2])); 
-       
-       String[] tabMed = this.dataMed.getText().split("+"); 
-        
-       m = obtenirMedecin(tabMed[0], tabMed[1]); 
-       
-       fds = new FicheDeSoins(p, m, dateActe); 
-       
-       for(int i =0 ; i < liste_acte.size(); i++){
-           fds.ajouterActe(liste_acte.get(i));
-           
-       }
-       
-        dispose();
+        this.nomPat2.setText(getP().getNom());
+        this.prenomPat.setText(getP().getPrenom());
+        this.dateNaissancePat.setText(getP().getDateDeNaissance().toString());
+
+        String[] tab = new String[3];
+        tab = this.dateActe.getText().split("/");
+        // JJ/MM/AA
+        Date dateActe = new Date(Integer.parseInt(tab[0]), Integer.parseInt(tab[1]), Integer.parseInt(tab[2]));
+
+        String[] tabMed = new String[2];
+        tabMed = this.dataMed.getText().split("\\+");
+
+        m = obtenirMedecin(tabMed[0], tabMed[1]);
+
+        if (m != null) {
+            fds = new FicheDeSoins(p, m, dateActe);
+
+            for (int i = 0; i < liste_acte.size(); i++) {
+                fds.ajouterActe(liste_acte.get(i));
+
+            }
+
+            dispose();
+        } else {
+            jLabel1.setText("Ce médecin n'existe pas !");
+            jLabel1.setVisible(true);
+
+        }
+
     }//GEN-LAST:event_validerActionPerformed
 
     private void addActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActeActionPerformed
-        new NouvelActe("Nouvel Acte", getDm(), this); 
+        new NouvelActe("Nouvel Acte", getDm(), this, p);
     }//GEN-LAST:event_addActeActionPerformed
 
     private void dateActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateActeActionPerformed
-    
-    public Medecin obtenirMedecin(String nom, String prenom){
-        Medecin m; 
-        int i =0; 
-        while(i<getDm().getListe_medecin().size() &&
-                !nom.equals(dm.getListe_medecin().get(i).getNom()) &&
-                    !prenom.equals(dm.getListe_medecin().get(i).getPrenom())){
-            i++; 
+
+    public Medecin obtenirMedecin(String nom, String prenom) {
+        Medecin m;
+        int i = 0;
+        while (i < getDm().getListe_medecin().size()
+                && !nom.equals(dm.getListe_medecin().get(i).getNom())
+                && !prenom.equals(dm.getListe_medecin().get(i).getPrenom())) {
+            i++;
         }
-        if(i<getDm().getListe_patient().size()){
-            m = getDm().getListe_medecin().get(i); 
+        if (i < getDm().getListe_patient().size()) {
+            m = getDm().getListe_medecin().get(i);
+        } else {
+            m = null;
         }
-        else m = null; 
-        
-        return m; 
+
+        return m;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addActe;
@@ -304,6 +345,7 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
     private javax.swing.JTextField dataMed;
     private javax.swing.JTextField dateActe;
     private javax.swing.JLabel dateNaissancePat;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -351,5 +393,9 @@ public class NouvelleFicheDeSoins extends javax.swing.JFrame {
      */
     public ArrayList<Acte> getListe_acte() {
         return liste_acte;
+    }
+    
+    public JTable getTabAct(){
+        return tabActe;
     }
 }

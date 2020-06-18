@@ -25,11 +25,11 @@ public class Acte {
     }
 
     public String toString() {
-        return getCode().toString() + ", coefficient : " + getCoef();
+        return code.toString() + ", coefficient : " + getCoef();
     }
 
     public double cout() {
-        return getCode().calculerCout(getCoef());
+        return code.calculerCout(coef);
     }
 
     /**

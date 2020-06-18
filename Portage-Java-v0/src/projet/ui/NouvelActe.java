@@ -5,33 +5,39 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
 import princetonPlainsboro.Acte;
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.Medecin;
-import princetonPlainsboro.Code; 
+import princetonPlainsboro.Code;
+import princetonPlainsboro.Patient;
 
 /**
  *
  * @author maximeriskwait
  */
 public class NouvelActe extends javax.swing.JFrame {
-    
+
     private DossierMedical dm;
-    private Medecin m; 
+    private Medecin m;
     private Acte acte;
     private Code code;
-    private NouvelleFicheDeSoins nfs; 
+    private NouvelleFicheDeSoins nfs;
+    private Patient p;
+    private boolean b;
+
     /**
      * Creates new form NouvelActe
      */
-    public NouvelActe(String title, DossierMedical dm, NouvelleFicheDeSoins nfs) {
+    public NouvelActe(String title, DossierMedical dm, NouvelleFicheDeSoins nfs, Patient p) {
         super(title);
         initComponents();
         this.setVisible(true);
-        this.dm = dm; 
-        this.m = m; 
-        this.nfs = nfs; 
-       
+        this.dm = dm;
+        this.m = m;
+        this.nfs = nfs;
+        this.p = p;
+        this.b = false;
     }
 
     /**
@@ -86,10 +92,10 @@ public class NouvelActe extends javax.swing.JFrame {
 
         jLabel7.setText("Code acte :");
 
-        nomActe.setText("NOM Acte");
+        nomActe.setText("Consultation au cabinet");
         nomActe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        coutActe.setText("00");
+        coutActe.setText("23.0");
         coutActe.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         codeActe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CSC", "FP", "KC", "KE", "K", "KFA", "KFB", "ORT", "PRO" }));
@@ -108,23 +114,23 @@ public class NouvelActe extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(valider)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(codeActe, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addComponent(nomActe, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(valider)
+                        .addComponent(nomActe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(codeActe, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(annuler)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 148, Short.MAX_VALUE)
+                        .addGap(0, 57, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -184,35 +190,34 @@ public class NouvelActe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
-        
-        String typeActe = (String) comboType.getSelectedItem(); 
-        String observation = txtObs.getText(); 
-        
-        acte = new Acte(code, 1, typeActe, observation);
-        
-        nfs.getListe_acte().add(acte); 
-         
+        String typeActe = (String) comboType.getSelectedItem();
+        String observation = txtObs.getText();
+        acte = (b) ? new Acte(code, 1, typeActe, observation) 
+                : new Acte(Code.CS, 1, "Diagnostique", observation);
+        ArrayList<Acte> liste_actes = nfs.getListe_acte();
+        liste_actes.add(acte);
+
         this.dispose();
-        nfs.revalidate();
-        
-        
+        nfs.refreshList(liste_actes);
+        //nfs = new NouvelleFicheDeSoins("Nouvelle fiche de soins", dm, p, liste_actes);
+
     }//GEN-LAST:event_validerActionPerformed
 
     private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_annulerActionPerformed
 
     private void codeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActeActionPerformed
-        
-        String s = (String) codeActe.getSelectedItem(); 
-        
-        switch(s){
-            case "CS": 
-                this.code = Code.CS; 
-            break; 
+
+        String s = (String) codeActe.getSelectedItem();
+        this.b = true;
+        switch (s) {
+            case "CS":
+                this.code = Code.CS;
+                break;
             case "CSC":
                 this.code = Code.CSC;
-            break; 
+                break;
             case "FP":
                 this.code = Code.FP;
                 break;
@@ -234,17 +239,17 @@ public class NouvelActe extends javax.swing.JFrame {
             case "ORT":
                 this.code = Code.ORT;
                 break;
-            case "PRO": 
+            case "PRO":
                 this.code = Code.PRO;
-                break;      
+                break;
         }
-        
-        this.nomActe.setText(code.getLibelle()); 
-        Double b = new Double(code.getCout()); 
-        this.coutActe.setText(b.toString()); 
-        
-        this.revalidate(); 
-        
+
+        this.nomActe.setText(code.getLibelle());
+        Double b = new Double(code.getCout());
+        this.coutActe.setText(b.toString());
+
+        this.revalidate();
+
     }//GEN-LAST:event_codeActeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

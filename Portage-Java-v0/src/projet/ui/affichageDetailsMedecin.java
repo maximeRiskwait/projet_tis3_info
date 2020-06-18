@@ -44,8 +44,8 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
         for (int i = 0; i < liste_patient.size(); i++) {
             data[i][0] = liste_patient.get(i).getNom() + " "
                     + liste_patient.get(i).getPrenom();
-            data[i][1] = 
-            data[i][2] = liste_patient.get(i).getDate().toString();
+            //data[i][1] = 
+            //data[i][2] = liste_patient.get(i).getDate().toString();
             
         }
         this.jTable1.setModel(new DefaultTableModel(data, liste));

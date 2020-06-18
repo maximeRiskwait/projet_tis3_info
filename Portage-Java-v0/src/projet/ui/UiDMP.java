@@ -54,7 +54,7 @@ public class UiDMP extends javax.swing.JFrame {
             
         }
         this.tabFiche.setModel(new DefaultTableModel(data, liste));
-        
+        this.adresse.setEditable(false);
     }
 
     /**

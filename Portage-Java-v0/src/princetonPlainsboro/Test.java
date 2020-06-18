@@ -52,6 +52,7 @@ class Test {
         //NouvelleFicheDeSoins nfds = new NouvelleFicheDeSoins("Nouvelle fiche de soins", dm, p1); 
         //new Connexion("test", dm).setVisible(true);
         //new AcceuilAdmin("Accueil", dm);
+        new UiDMP(dm, dm.getListe_patient().get(0));
         /*for(int i = 0; i<dm.getListe_patient().size();i++){
                 System.out.println(dm.getListe_patient().get(i).getNom());
         }
