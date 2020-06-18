@@ -26,7 +26,7 @@ import javax.xml.stream.XMLStreamReader;
 public class LectureXML {
     /// nom du document XML a analyser
     private String nomFichier;
-    private final static String repBase = "src/donnees/";
+    private final static String repBase = "";
     
     // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
     public LectureXML(String nomFichier) {
