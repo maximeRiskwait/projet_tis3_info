@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Code.java</file>
@@ -14,4 +14,6 @@
             <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/LectureXML.java</file>
         </group>
     </open-files>
+=======
+>>>>>>> b5a5e00518f3c1883ea25f501c507526aaa5869e
 </project-private>
