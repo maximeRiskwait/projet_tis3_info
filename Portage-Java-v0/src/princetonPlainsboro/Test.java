@@ -6,9 +6,9 @@ import projet.ui.*;
 class Test {
 
     public static void main(String[] args) {
-        //LectureXML test = new LectureXML("dossiers.xml");
-        //DossierMedical dm = test.getDossier();
-        DossierMedical dm = new DossierMedical(); 
+        LectureXML test = new LectureXML("dossiers.xml");
+        DossierMedical dm = test.getDossier();
+        //DossierMedical dm = new DossierMedical(); 
         //dm.afficher();
         Date date = new Date(13, 06, 1978); 
 
@@ -49,7 +49,7 @@ class Test {
 
 
         FenetrePatMed fpm = new FenetrePatMed(dm);
-        NouvelleFicheDeSoins nfds = new NouvelleFicheDeSoins("Nouvelle fiche de soins", dm, p1); 
+        //NouvelleFicheDeSoins nfds = new NouvelleFicheDeSoins("Nouvelle fiche de soins", dm, p1); 
         //new Connexion("test", dm).setVisible(true);
         //new AcceuilAdmin("Accueil", dm);
         /*for(int i = 0; i<dm.getListe_patient().size();i++){

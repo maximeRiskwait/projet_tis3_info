@@ -53,7 +53,7 @@ public class EcritureXML {
             writer.writeCharacters("\n");
             writer.writeStartElement("dossiers");
             writer.writeCharacters("\n");
-
+ 
             for (int i = 0; i < dm.getFiches().size(); i++) {
                 writer.writeStartElement("ficheDeSoins");
                 writer.writeCharacters("\n");
