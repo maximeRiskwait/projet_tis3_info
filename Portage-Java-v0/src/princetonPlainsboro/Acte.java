@@ -1,28 +1,36 @@
 package princetonPlainsboro;
 
 public class Acte {
-    private Code code;      
+
+    private Code code;
     private int coef;
-    private String nomActe; 
-    private String nomMedecin; 
-    private Date dateRealisation; 
-    private String type; 
-    private String observation; 
-    
+    private String nomActe;
+    private String nomMedecin;
+    private Date dateRealisation;
+    private String type;
+    private String observation;
+
+    public Acte(Code code, int coef) {
+        this.code = code;
+        this.coef = coef;
+        this.type = "";
+        this.observation = "";
+    }
+
     public Acte(Code code, int coef, String typeActe, String observation) {
         this.code = code;
         this.coef = coef;
-        this.type = typeActe; 
-        this.observation = observation; 
-        }
-    
+        this.type = typeActe;
+        this.observation = observation;
+    }
+
     public String toString() {
         return getCode().toString() + ", coefficient : " + getCoef();
-        }
-    
+    }
+
     public double cout() {
         return getCode().calculerCout(getCoef());
-        }
+    }
 
     /**
      * @return the code
@@ -121,5 +129,5 @@ public class Acte {
     public void setObservation(String observation) {
         this.observation = observation;
     }
-    
-    }
+
+}
