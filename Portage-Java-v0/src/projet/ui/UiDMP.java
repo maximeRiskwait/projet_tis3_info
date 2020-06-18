@@ -5,17 +5,56 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.FicheDeSoins;
+import princetonPlainsboro.Patient;
+
 /**
  *
  * @author maximeriskwait
  */
 public class UiDMP extends javax.swing.JFrame {
 
+    
+    private DossierMedical dm; 
+    private Patient p; 
+    private ArrayList<FicheDeSoins> liste_fiche; 
+    private String[] liste; 
     /**
      * Creates new form uiDMP
      */
-    public UiDMP() {
+    public UiDMP(DossierMedical dm, Patient p) {
         initComponents();
+        this.setVisible(true); 
+        this.dm = dm; 
+        this.p = p; 
+        this.liste_fiche =new ArrayList<FicheDeSoins>(); 
+        this.liste = new String[3];
+        
+        this.nomPat.setText(p.getNom());
+        this.prenomPat.setText(p.getPrenom());
+        this.ddNPat.setText(p.getDateDeNaissance().toString()); 
+        this.numSecuSoc.setText(p.getNumSS());
+        this.adresse.setText(p.getAdresse());
+        this.numTelephone.setText(p.getNumTel()); 
+        
+        this.liste[0] = "Fiche de soins";
+        this.liste[1] = "MÃ©decin"; 
+        this.liste[2] = "Date";
+        ajouterListe(p, dm); 
+        
+        Object  [][] data = new Object[liste_fiche.size()][this.liste.length];
+        for (int i = 0; i < liste_fiche.size(); i++) {
+            data[i][0] = i+1;
+            data[i][1] = liste_fiche.get(i).getMedecin().getNom() + " "
+                    + liste_fiche.get(i).getMedecin().getPrenom();
+            data[i][2] = liste_fiche.get(i).getDate().toString();
+            
+        }
+        this.tabFiche.setModel(new DefaultTableModel(data, liste));
+        
     }
 
     /**
@@ -42,16 +81,16 @@ public class UiDMP extends javax.swing.JFrame {
         labNumTel = new javax.swing.JLabel();
         numTelephone = new javax.swing.JLabel();
         spFdSoins = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabFiche = new javax.swing.JTable();
         addFdSoins = new javax.swing.JButton();
         butOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Dossier médical Patient");
+        setTitle("Dossier mÃ©dical Patient");
 
         labNomPat.setText("Nom : ");
 
-        labPrenomPat.setText("Prénom : ");
+        labPrenomPat.setText("PrÃ©nom : ");
 
         nomPat.setText("SMITH");
         nomPat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -64,7 +103,7 @@ public class UiDMP extends javax.swing.JFrame {
         ddNPat.setText("17/07/1967");
         ddNPat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        labNumSecu.setText("Numéro Sécurité Sociale");
+        labNumSecu.setText("NumÃ©ro SÃ©curitÃ© Sociale");
 
         numSecuSoc.setText("1 67 05 75 006 084 36");
         numSecuSoc.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -78,12 +117,12 @@ public class UiDMP extends javax.swing.JFrame {
         adresse.setText("18 rue de la fac, 38000, Grenoble ");
         spAdresse.setViewportView(adresse);
 
-        labNumTel.setText("Numéro de téléphone :");
+        labNumTel.setText("NumÃ©ro de tÃ©lÃ©phone :");
 
         numTelephone.setText("06 56 56 56 56");
         numTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabFiche.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Fred", "02/02/2020"},
                 {"2", "Jules", "04/07/2002"},
@@ -91,10 +130,10 @@ public class UiDMP extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Feuille de soins", "Médecin", "Date"
+                "Feuille de soins", "MÃ©decin", "Date"
             }
         ));
-        spFdSoins.setViewportView(jTable1);
+        spFdSoins.setViewportView(tabFiche);
 
         addFdSoins.setText("Nouvelle fiche de soin");
         addFdSoins.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +242,7 @@ public class UiDMP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addFdSoinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFdSoinsActionPerformed
-        NouvelleFicheDeSoins f = new NouvelleFicheDeSoins("Nouvelle fiche de soin");
+        NouvelleFicheDeSoins f = new NouvelleFicheDeSoins("Nouvelle fiche de soin", dm, p);
     }//GEN-LAST:event_addFdSoinsActionPerformed
 
     private void butOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butOKActionPerformed
@@ -241,9 +280,19 @@ public class UiDMP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UiDMP().setVisible(true);
+               // new UiDMP().setVisible(true);
             }
         });
+    }
+    
+    public void ajouterListe(Patient p, DossierMedical dm){
+        
+        for(int i = 0; i < dm.getFiches().size(); i++){
+            if(p.equals(dm.getFiches().get(i).getPatient())){
+                FicheDeSoins fs = dm.getFiches().get(i);
+                this.liste_fiche.add(fs);
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,7 +301,6 @@ public class UiDMP extends javax.swing.JFrame {
     private javax.swing.JButton butOK;
     private javax.swing.JLabel ddNPat;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labAdresse;
     private javax.swing.JLabel labDdN;
     private javax.swing.JLabel labNomPat;
@@ -265,5 +313,6 @@ public class UiDMP extends javax.swing.JFrame {
     private javax.swing.JLabel prenomPat;
     private javax.swing.JScrollPane spAdresse;
     private javax.swing.JScrollPane spFdSoins;
+    private javax.swing.JTable tabFiche;
     // End of variables declaration//GEN-END:variables
 }

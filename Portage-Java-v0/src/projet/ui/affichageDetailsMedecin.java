@@ -5,17 +5,51 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import princetonPlainsboro.Date;
+import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.FicheDeSoins;
+import princetonPlainsboro.Medecin;
+import princetonPlainsboro.Patient;
+
 /**
  *
  * @author maximeriskwait
  */
 public class affichageDetailsMedecin extends javax.swing.JFrame {
 
+    private DossierMedical dm;  
+    private Medecin m; 
+    private ArrayList<Patient> liste_patient; 
+    private String[] liste; 
     /**
      * Creates new form affichageDetailsMedecin
      */
-    public affichageDetailsMedecin() {
+    public affichageDetailsMedecin(DossierMedical dm, Medecin m) {
         initComponents();
+        this.setVisible(true);
+        
+        this.dm = dm; 
+        this.m = m; 
+        this.liste = new String[3]; 
+        
+        ajouterPatient(m); 
+        
+        this.liste[0] = "Patient";
+        this.liste[1] = "Date"; 
+        this.liste[2] = "Coût"; 
+        
+        Object  [][] data = new Object[liste_patient.size()][this.liste.length];
+        for (int i = 0; i < liste_patient.size(); i++) {
+            data[i][0] = liste_patient.get(i).getNom() + " "
+                    + liste_patient.get(i).getPrenom();
+            data[i][1] = 
+            data[i][2] = liste_patient.get(i).getDate().toString();
+            
+        }
+        this.jTable1.setModel(new DefaultTableModel(data, liste));
+        
     }
 
     /**
@@ -65,7 +99,7 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Patient", "Acte", "Coût"
+                "Patient", "Date", "Coût"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -166,9 +200,22 @@ public class affichageDetailsMedecin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new affichageDetailsMedecin().setVisible(true);
+               // new affichageDetailsMedecin().setVisible(true);
             }
         });
+    }
+    
+    public void ajouterPatient(Medecin m){
+        
+        for (int i = 0; i < dm.getFiches().size(); i++) {
+            FicheDeSoins f = dm.getFiches().get(i);
+            if (m.equals(f.getMedecin())) {
+                Patient p = f.getPatient();
+                if (!liste_patient.contains(p)) {
+                    liste_patient.add(p);
+                }
+            }
+        }    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
