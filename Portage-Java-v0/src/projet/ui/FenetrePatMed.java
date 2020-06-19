@@ -33,9 +33,9 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
         this.liste[0] = "Nom";
         this.liste[1] = "Prénom";
-        this.liste[2] = "Numéro tel";
-        this.liste[3] = "Date de naissance";
-        this.liste[4] = "Adresse";
+        this.liste[2] = "Date de naissance";
+        this.liste[3] = "Adresse";
+        this.liste[4] = "Numéro tel";
         this.liste[5] = "Numéro SS";
 
         Object[][] data = new Object[this.liste_patient.size()][6];
@@ -98,7 +98,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
             }}
             ;
             rechercheMed = new javax.swing.JTextField();
-            jButton3 = new javax.swing.JButton();
+            rechercherbutton = new javax.swing.JButton();
             jButton4 = new javax.swing.JButton();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,7 +172,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 .addGroup(ongletPatientLayout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(ongletPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(spPat, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                        .addComponent(spPat)
                         .addGroup(ongletPatientLayout.createSequentialGroup()
                             .addComponent(afficher)
                             .addGap(186, 186, 186)
@@ -223,10 +223,10 @@ public class FenetrePatMed extends javax.swing.JFrame {
                 }
             });
 
-            jButton3.setText("Rechercher");
-            jButton3.addActionListener(new java.awt.event.ActionListener() {
+            rechercherbutton.setText("Rechercher");
+            rechercherbutton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton3ActionPerformed(evt);
+                    rechercherbuttonActionPerformed(evt);
                 }
             });
 
@@ -249,7 +249,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
                             .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(26, 26, 26)
-                            .addComponent(jButton3)
+                            .addComponent(rechercherbutton)
                             .addGap(66, 66, 66)
                             .addComponent(jButton4)))
                     .addContainerGap())
@@ -262,7 +262,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(ongletMedecinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rechercheMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3)
+                        .addComponent(rechercherbutton)
                         .addComponent(jButton4))
                     .addContainerGap(36, Short.MAX_VALUE))
             );
@@ -327,7 +327,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            new AffichageFichePatient(obtenirPatient(recherchePat.getText()));
+            new UiDMP(dm, obtenirPatient(recherchePat.getText()));
         } catch (NullPointerException e) {
             JOptionPane jop1 = new JOptionPane();
             jop1.showMessageDialog(null, "Numéro de sécurité sociale invalide",
@@ -335,7 +335,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void rechercherbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercherbuttonActionPerformed
         String[] tabMed = new String[2];
         tabMed = rechercheMed.getText().split("\\+");
         try {
@@ -346,7 +346,7 @@ public class FenetrePatMed extends javax.swing.JFrame {
                     "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_rechercherbuttonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
@@ -393,13 +393,13 @@ public class FenetrePatMed extends javax.swing.JFrame {
     private javax.swing.JButton afficher;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel ongletMedecin;
     private javax.swing.JTabbedPane ongletPatMed;
     private javax.swing.JPanel ongletPatient;
     private javax.swing.JTextField rechercheMed;
     private javax.swing.JTextField recherchePat;
+    private javax.swing.JButton rechercherbutton;
     private javax.swing.JScrollPane spMed;
     private javax.swing.JScrollPane spPat;
     private javax.swing.JTable tableMed;
