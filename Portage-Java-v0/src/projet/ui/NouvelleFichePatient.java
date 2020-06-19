@@ -6,25 +6,28 @@
 package projet.ui;
 
 import princetonPlainsboro.Patient;
-import princetonPlainsboro.Date; 
+import princetonPlainsboro.Date;
 import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.LectureXML;
+
 /**
  *
  * @author melin
  */
 public class NouvelleFichePatient extends javax.swing.JFrame {
 
-     private DossierMedical dm; 
+    private DossierMedical dm;
+
     /**
      * Creates new form FichePatient
      */
     public NouvelleFichePatient(String title, DossierMedical dm) {
         super(title);
         initComponents();
-        this.setSize(500,350);
+        this.setSize(500, 350);
         this.setLocationRelativeTo(null);
-        this.dm = dm; 
+        this.dm = dm;
+        this.setVisible(true);
     }
 
     /**
@@ -179,83 +182,32 @@ public class NouvelleFichePatient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
-         
-        try {
-            LectureXML liste = new LectureXML("dossiers.xml");
-            this.dm = liste.getDossier(); 
-            dm.ajouterPatient(creerPatient());
-            javax.swing.JOptionPane.showMessageDialog(null, "Patient ajouté a la liste");
-            System.out.println("Patient ajouté");
-            this.dispose();
-            this.dm.afficher();
-            // Test qui fonctionne, cela ajoute bien a la liste 
-            /*for(int i = 0; i<dm.getListe_patient().size();i++){
-                System.out.println(dm.getListe_patient().get(i).getNom());
-            }*/
-            
-        } catch (NullPointerException e) {
-            System.out.println("Un ou plusieurs des champs sont vide. Veuillez tous les remplir");
-            // Mettre un JOptionPane en cas d'erreur
-        }
-         
+        dm.ajouterPatient(creerPatient());
+        javax.swing.JOptionPane.showMessageDialog(null, "Patient ajouté a la liste");
+        System.out.println("Patient ajouté");
+        this.dispose();
     }//GEN-LAST:event_validerActionPerformed
 
     private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_annulerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFichePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFichePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFichePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NouvelleFichePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LectureXML liste = new LectureXML("dossiers.xml"); 
-                DossierMedical dm = liste.getDossier(); 
-                new NouvelleFichePatient("Nouvelle fiche patient", dm).setVisible(true);
-            }
-        });
-    }
-    
+
     public Patient creerPatient() {
-        
+
         String nom = dataNom.getText();
-        String prenom = dataPrenom.getText(); 
-        String[] tab = dateDateNaissance.getText().split("/"); 
-        Date dateNaissance = new Date(Integer.parseInt(tab[0]),Integer.parseInt(tab[1]),Integer.parseInt(tab[2])); 
-        String num = dataNumTel.getText(); 
-        String adresse = jTextArea1.getText(); 
-        String numSecu = dataNumSecu.getText(); 
-        
+        String prenom = dataPrenom.getText();
+        String[] tab = dateDateNaissance.getText().split("/");
+        Date dateNaissance = new Date(Integer.parseInt(tab[0]), Integer.parseInt(tab[1]), Integer.parseInt(tab[2]));
+        String num = dataNumTel.getText();
+        String adresse = jTextArea1.getText();
+        String numSecu = dataNumSecu.getText();
+
         Patient p = new Patient(nom, prenom, dateNaissance, num, adresse, numSecu);
-        
+
         return p;
-           
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

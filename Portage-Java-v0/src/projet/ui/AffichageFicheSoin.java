@@ -5,17 +5,53 @@
  */
 package projet.ui;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+import princetonPlainsboro.Acte;
+import princetonPlainsboro.DossierMedical;
+import princetonPlainsboro.FicheDeSoins;
+
 /**
  *
  * @author maximeriskwait
  */
 public class AffichageFicheSoin extends javax.swing.JFrame {
 
+    
+    private DossierMedical dm;
+    private FicheDeSoins fs;
+    private ArrayList<Acte> liste_acte;   
     /**
      * Creates new form AffichageFicheSoin
      */
-    public AffichageFicheSoin() {
+    public AffichageFicheSoin(DossierMedical dm, FicheDeSoins fs) {
         initComponents();
+        this.setVisible(true);
+        this.dm = dm; 
+        this.fs = fs; 
+        liste_acte = new ArrayList<Acte>(); 
+        
+        ajouterActeListe(fs); 
+        
+        this.nomPat.setText(fs.getPatient().getNom());
+        this.prenomPat.setText(fs.getPatient().getPrenom()); 
+        this.dateNaissancePat.setText(fs.getPatient().getDateDeNaissance().toString()); 
+        this.nomPrenomMedecin.setText(fs.getMedecin().getNom()+" "+
+                fs.getMedecin().getPrenom()); 
+        this.dateFs.setText(fs.getDate().toString());
+        
+        DefaultListModel model = new DefaultListModel(); 
+        
+        for(int i = 0; i < liste_acte.size(); i++){   
+            model.addElement(liste_acte.get(i).getCode().getLibelle());       
+        }
+        
+        this.listActe.setModel(model); 
+        Double b = coutFiche(liste_acte); 
+        this.coutFiche.setText(b.toString()); 
+        
+        
     }
 
     /**
@@ -39,12 +75,11 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         labActe = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listActe = new javax.swing.JList<>();
-        labComMedecin = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        textMedecin = new javax.swing.JTextArea();
         labComMedecin1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        dateFs = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        coutFiche = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Fiche de soin ");
@@ -76,20 +111,29 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listActe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listActeMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(listActe);
-
-        labComMedecin.setText("Commentaire du médecin :");
-
-        textMedecin.setColumns(20);
-        textMedecin.setRows(5);
-        jScrollPane3.setViewportView(textMedecin);
 
         labComMedecin1.setText("Date :");
 
-        jLabel1.setText("18/04/2020");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        dateFs.setText("18/04/2020");
+        dateFs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Coût :");
+
+        coutFiche.setText("000");
+        coutFiche.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,15 +163,15 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateNaissancePat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nomPrenomMedecin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
+                            .addComponent(dateFs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labComMedecin1)
                                     .addComponent(labDdN)
                                     .addComponent(labMedecin)
-                                    .addComponent(labComMedecin))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(coutFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 122, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -155,16 +199,17 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labActe)
-                    .addComponent(labComMedecin))
+                    .addComponent(labComMedecin1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labComMedecin1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(dateFs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(coutFiche)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
 
@@ -188,50 +233,48 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AffichageFicheSoin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AffichageFicheSoin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AffichageFicheSoin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AffichageFicheSoin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AffichageFicheSoin().setVisible(true);
-            }
-        });
+    private void listActeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listActeMouseClicked
+        if (evt.getClickCount()==2){
+            new AffichageActe(liste_acte.get(listActe.getSelectedIndex()));
+        }
+    }//GEN-LAST:event_listActeMouseClicked
+
+   
+    
+    public void ajouterActeListe(FicheDeSoins fs){
+        
+        for(int i = 0; i < fs.getActes().size(); i++){
+                Acte a = fs.getActes().get(i);
+                this.liste_acte.add(a);
+                String libelle = a.getCode().getLibelle(); 
+        }
+        
+    }
+    
+    public double coutFiche(ArrayList<Acte> la){
+       double cout = 0; 
+        
+        for(int i = 0; i < la.size(); i++){
+            cout += la.get(i).cout();  
+        }
+        
+        return cout; 
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel coutFiche;
+    private javax.swing.JLabel dateFs;
     private javax.swing.JLabel dateNaissancePat;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labActe;
-    private javax.swing.JLabel labComMedecin;
     private javax.swing.JLabel labComMedecin1;
     private javax.swing.JLabel labDdN;
     private javax.swing.JLabel labMedecin;
@@ -241,6 +284,5 @@ public class AffichageFicheSoin extends javax.swing.JFrame {
     private javax.swing.JLabel nomPat;
     private javax.swing.JLabel nomPrenomMedecin;
     private javax.swing.JLabel prenomPat;
-    private javax.swing.JTextArea textMedecin;
     // End of variables declaration//GEN-END:variables
 }

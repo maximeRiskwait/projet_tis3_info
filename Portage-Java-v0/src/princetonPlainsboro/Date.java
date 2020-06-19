@@ -12,7 +12,11 @@ public class Date implements Comparable {
         }
     
     public String toString() {
-        return jour + "/" + mois + "/" + annee;
+        return jour + "-" + mois + "-" + annee;
+        }
+    
+    public String toXml() {
+        return annee + "-" + mois + "-" + jour;
         }
     
     public boolean equals(Object o) {

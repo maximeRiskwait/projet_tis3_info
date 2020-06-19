@@ -1,172 +1,232 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dossiers>
-
-  <ficheDeSoins>
-    <date>2006-01-06</date>
-    <medecin>
-        <nom>Bono</nom>
-        <prenom>Jean</prenom>
-        <specialite>ORL</specialite>
-        <numTel>0612345678</numTel>
-    </medecin>
-    <patient>
-        <nom>Track</nom>
-        <prenom>Pat</prenom>
-        <dateNaissance>08-07-1950</dateNaissance>
-        <adresse>18 rue du pont, Grenoble</adresse>
-        <numTel>0623232323</numTel>
-        <numSS>150072531111426</numSS>
-    </patient>
-    <acte>
-        <code>CS</code>
-        <coef>1</coef>
-    </acte>
-    <acte>
-        <code>ORT</code>
-        <coef>50</coef>
-    </acte>
-    <acte>
-        <code>PRO</code>
-        <coef>150</coef>
-    </acte>
-  </ficheDeSoins>
-  
-  <ficheDeSoins>
-    <date>2005-10-23</date>
-    <medecin>
-        <nom>Deblouze</nom>
-        <prenom>Agathe</prenom>
-        <specialite>Cardiologue</specialite>
-        <numTel>0609876531</numTel>
-    </medecin>
-    <patient>
-        <nom>Bole</nom>
-        <prenom>Pat</prenom>
-        <dateNaissance>23-12-2000</dateNaissance>
-        <adresse>1 Avenue Lafayette, Grenoble</adresse>
-        <numTel>0601010101</numTel>
-        <numSS>100122531111426</numSS>
-    </patient>
-    <acte>
-        <code>CSC</code>
-        <coef>1</coef>
-    </acte>
-    <acte>
-        <code>KC</code>
-        <coef>120</coef>
-    </acte>
-  </ficheDeSoins>
-
-  <ficheDeSoins>
-    <date>2006-01-03</date>
-    <medecin>
-        <nom>Deblouze</nom>
-        <prenom>Agathe</prenom>
-        <specialite>Cardiologue</specialite>
-        <numTel>0676893449</numTel>
-    </medecin>
-    <patient>
-        <nom>Bole</nom>
-        <prenom>Maggy</prenom>
-        <dateNaissance>03-1-1995</dateNaissance>
-        <adresse>18 chemin de sable, Grenoble</adresse>
-        <numTel>0667676767</numTel>
-        <numSS>195112531111426</numSS>
-    </patient>
-    <acte>
-        <code>CSC</code>
-        <coef>2</coef>
-    </acte>
-  </ficheDeSoins>
-  
-  <ficheDeSoins>
-    <date>2005-11-13</date>
-    <medecin>
-        <nom>Heget</nom>
-        <prenom>Yves</prenom>
-        <specialite>Gynecologie</specialite>
-        <numTel>0600011134</numTel>
-    </medecin>
-    <patient>
-        <nom>Bole</nom>
-        <prenom>Maggy</prenom>
-        <dateNaissance>18-0-1988</dateNaissance>
-        <adresse>18 rue du bois, Grenoble</adresse>
-        <numTel>0698989898</numTel>
-        <numSS>188022531111426</numSS>
-    </patient>
-    <acte>
-        <code>KE</code>
-        <coef>1</coef>   
-    </acte>
-  </ficheDeSoins>
-
-  <ficheDeSoins>
-    <date>2005-08-31</date>
-    <medecin>
-        <nom>Covert</nom>
-        <prenom>Harry</prenom>
-        <specialite>ORL</specialite>
-        <numTel>0656455645</numTel>
-    </medecin>
-    <patient>
-        <nom>Epi</nom>
-        <prenom>Fanie</prenom>
-        <dateNaissance>05-05-2002</dateNaissance>
-        <adresse>18 Avenue des hommes, Grenoble</adresse>
-        <numTel>0678674534</numTel>
-        <numSS>102052531111426</numSS>
-    </patient>
-    <acte>
-        <code>CS</code>
-        <coef>1</coef>
-    </acte>
-    <acte>
-        <code>KFA</code>
-        <coef>72</coef>
-    </acte>
-  </ficheDeSoins>
-    
-  <ficheDeSoins>
-    <date>2005-08-31</date>
-    <medecin>
-        <nom>Foupasune</nom>
-        <prenom>Jean</prenom>
-        <specialite>ORL</specialite>
-        <numTel>0611111111</numTel>
-    </medecin>
-    <patient>
-        <nom>Henfayitte</nom>
-        <prenom>Melusine</prenom>
-        <dateNaissance>01-01-1999</dateNaissance>
-        <adresse>18 rue du bonheur, Grenoble</adresse>
-        <numTel>0690787689</numTel>
-        <numSS>199012531111426</numSS>
-    </patient>
-    <acte>
-        <code>CS</code>
-        <coef>1</coef>
-    </acte>
-    <acte>
-        <code>KFA</code>
-        <coef>72</coef>
-    </acte>
-    <acte>
-        <code>K</code>
-        <coef>1000</coef>
-    </acte>
-    <acte>
-        <code>KE</code>
-        <coef>60</coef>
-    </acte>
-    <acte>
-        <code>ORT</code>
-        <coef>85</coef>
-    </acte>
-    <acte>
-        <code>PRO</code>
-        <coef>850</coef>
-    </acte>
-  </ficheDeSoins>
-  
+<ficheDeSoins>
+<date>6-1-2006</date>
+<medecin>
+<nom>Bono</nom>
+<prenom>Jean</prenom>
+<specialite>ORL</specialite>
+<numTel>0612345678</numTel>
+</medecin>
+<patient>
+<nom>Track</nom>
+<prenom>Pat</prenom>
+<dateNaissance>8-7-1950</dateNaissance>
+<adresse>18 rue du pont, Grenoble</adresse>
+<numTel>0623232323</numTel>
+<numSS>150072531111426</numSS>
+</patient>
+<acte>
+<code>CS</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>ORT</code>
+<coef>2</coef>
+</acte>
+<acte>
+<code>PRO</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>23-10-2005</date>
+<medecin>
+<nom>Deblouze</nom>
+<prenom>Agathe</prenom>
+<specialite>Cardiologue</specialite>
+<numTel>0609876531</numTel>
+</medecin>
+<patient>
+<nom>Bole</nom>
+<prenom>Pat</prenom>
+<dateNaissance>23-12-2000</dateNaissance>
+<adresse>1 Avenue Lafayette, Grenoble</adresse>
+<numTel>0601010101</numTel>
+<numSS>100122531111426</numSS>
+</patient>
+<acte>
+<code>CSC</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>KC</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>3-1-2006</date>
+<medecin>
+<nom>Deblouze</nom>
+<prenom>Agathe</prenom>
+<specialite>Cardiologue</specialite>
+<numTel>0676893449</numTel>
+</medecin>
+<patient>
+<nom>Bole</nom>
+<prenom>Maggy</prenom>
+<dateNaissance>3-1-1995</dateNaissance>
+<adresse>18 chemin de sable, Grenoble</adresse>
+<numTel>0667676767</numTel>
+<numSS>195112531111426</numSS>
+</patient>
+<acte>
+<code>CSC</code>
+<coef>2</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>13-11-2005</date>
+<medecin>
+<nom>Heget</nom>
+<prenom>Yves</prenom>
+<specialite>Gynecologie</specialite>
+<numTel>0600011134</numTel>
+</medecin>
+<patient>
+<nom>Bole</nom>
+<prenom>Maggy</prenom>
+<dateNaissance>18-0-1988</dateNaissance>
+<adresse>18 rue du bois, Grenoble</adresse>
+<numTel>0698989898</numTel>
+<numSS>188022531111426</numSS>
+</patient>
+<acte>
+<code>KE</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>31-8-2005</date>
+<medecin>
+<nom>Covert</nom>
+<prenom>Harry</prenom>
+<specialite>ORL</specialite>
+<numTel>0656455645</numTel>
+</medecin>
+<patient>
+<nom>Epi</nom>
+<prenom>Fanie</prenom>
+<dateNaissance>5-5-2002</dateNaissance>
+<adresse>18 Avenue des hommes, Grenoble</adresse>
+<numTel>0678674534</numTel>
+<numSS>102052531111426</numSS>
+</patient>
+<acte>
+<code>CS</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>KFA</code>
+<coef>3</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>31-8-2005</date>
+<medecin>
+<nom>Foupasune</nom>
+<prenom>Jean</prenom>
+<specialite>ORL</specialite>
+<numTel>0611111111</numTel>
+</medecin>
+<patient>
+<nom>Henfayitte</nom>
+<prenom>Melusine</prenom>
+<dateNaissance>1-1-1999</dateNaissance>
+<adresse>18 rue du bonheur, Grenoble</adresse>
+<numTel>0690787689</numTel>
+<numSS>199012531111426</numSS>
+</patient>
+<acte>
+<code>CS</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>KFA</code>
+<coef>2</coef>
+</acte>
+<acte>
+<code>K</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>KE</code>
+<coef>4</coef>
+</acte>
+<acte>
+<code>ORT</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>PRO</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>11-6-2020</date>
+<medecin>
+<nom>Bono</nom>
+<prenom>Jean</prenom>
+<specialite>ORL</specialite>
+<numTel>0612345678</numTel>
+</medecin>
+<patient>
+<nom>Henfayitte</nom>
+<prenom>Melusine</prenom>
+<dateNaissance>1-1-1999</dateNaissance>
+<adresse>18 rue du bonheur, Grenoble</adresse>
+<numTel>0690787689</numTel>
+<numSS>199012531111426</numSS>
+</patient>
+<acte>
+<code>CS</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>KE</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>2005-2-23</date>
+<medecin>
+<nom>Bono</nom>
+<prenom>Jean</prenom>
+<specialite>ORL</specialite>
+<numTel>0612345678</numTel>
+</medecin>
+<patient>
+<nom>Bole</nom>
+<prenom>Maggy</prenom>
+<dateNaissance>3-1-1995</dateNaissance>
+<adresse>18 chemin de sable, Grenoble</adresse>
+<numTel>0667676767</numTel>
+<numSS>195112531111426</numSS>
+</patient>
+<acte>
+<code>CSC</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>13-1-2020</date>
+<medecin>
+<nom>Covert</nom>
+<prenom>Harry</prenom>
+<specialite>ORL</specialite>
+<numTel>0656455645</numTel>
+</medecin>
+<patient>
+<nom>Henfayitte</nom>
+<prenom>Melusine</prenom>
+<dateNaissance>1-1-1999</dateNaissance>
+<adresse>18 rue du bonheur, Grenoble</adresse>
+<numTel>0690787689</numTel>
+<numSS>199012531111426</numSS>
+</patient>
+<acte>
+<code>KE</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
 </dossiers>
