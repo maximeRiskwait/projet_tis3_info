@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Code.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/projet/ui/NouvelleFicheDeSoins.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Acte.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/DossierMedical.java</file>
-            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Test.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/projet/ui/AffichageFicheSoin.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/CreateXMLFileJava.java</file>
             <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/projet/ui/UiDMP.java</file>
             <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/projet/ui/FenetrePatMed.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Date.java</file>
             <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/LectureXML.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/princetonPlainsboro/Patient.java</file>
+            <file>file:/Users/maximeriskwait/Desktop/Projet_tis3/code_git/projet_tis3_info/Portage-Java-v0/src/donnees/dossiers.xml</file>
         </group>
     </open-files>
-=======
->>>>>>> b5a5e00518f3c1883ea25f501c507526aaa5869e
 </project-private>

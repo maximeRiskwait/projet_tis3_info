@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dossiers>
 <ficheDeSoins>
-<date>6-1-2006</date>
+<date>2006-1-6</date>
 <medecin>
 <nom>Bono</nom>
 <prenom>Jean</prenom>
@@ -30,7 +30,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>23-10-2005</date>
+<date>2005-10-23</date>
 <medecin>
 <nom>Deblouze</nom>
 <prenom>Agathe</prenom>
@@ -55,7 +55,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>3-1-2006</date>
+<date>2006-1-3</date>
 <medecin>
 <nom>Deblouze</nom>
 <prenom>Agathe</prenom>
@@ -76,7 +76,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>13-11-2005</date>
+<date>2005-11-13</date>
 <medecin>
 <nom>Heget</nom>
 <prenom>Yves</prenom>
@@ -97,7 +97,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>31-8-2005</date>
+<date>2005-8-31</date>
 <medecin>
 <nom>Covert</nom>
 <prenom>Harry</prenom>
@@ -122,7 +122,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>31-8-2005</date>
+<date>2005-8-31</date>
 <medecin>
 <nom>Foupasune</nom>
 <prenom>Jean</prenom>
@@ -163,7 +163,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>11-6-2020</date>
+<date>2020-6-11</date>
 <medecin>
 <nom>Bono</nom>
 <prenom>Jean</prenom>
@@ -188,7 +188,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>2005-2-23</date>
+<date>23-2-2005</date>
 <medecin>
 <nom>Bono</nom>
 <prenom>Jean</prenom>
@@ -209,7 +209,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>13-1-2020</date>
+<date>2020-1-13</date>
 <medecin>
 <nom>Covert</nom>
 <prenom>Harry</prenom>
@@ -226,6 +226,31 @@
 </patient>
 <acte>
 <code>KE</code>
+<coef>1</coef>
+</acte>
+</ficheDeSoins>
+<ficheDeSoins>
+<date>19-6-2020</date>
+<medecin>
+<nom>Bono</nom>
+<prenom>Jean</prenom>
+<specialite>ORL</specialite>
+<numTel>0612345678</numTel>
+</medecin>
+<patient>
+<nom>Akeleur</nom>
+<prenom>Ondine</prenom>
+<dateNaissance>1995-8-29</dateNaissance>
+<adresse>1 rue de l'école, Tours</adresse>
+<numTel>0698899988</numTel>
+<numSS>295083732211532</numSS>
+</patient>
+<acte>
+<code>KE</code>
+<coef>1</coef>
+</acte>
+<acte>
+<code>K</code>
 <coef>1</coef>
 </acte>
 </ficheDeSoins>
