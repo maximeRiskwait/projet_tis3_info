@@ -16,7 +16,7 @@ public class Acte {
         this.type = "";
         this.observation = "";
     }
-
+    // constructeur numéro 2
     public Acte(Code code, int coef, String typeActe, String observation) {
         this.code = code;
         this.coef = coef;
