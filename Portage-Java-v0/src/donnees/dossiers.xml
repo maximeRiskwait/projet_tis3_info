@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dossiers>
     <ficheDeSoins>
-        <date>6/1/2006</date>
+        <date>6-1-2006</date>
         <medecin>
             <nom>Bono</nom>
             <prenom>Jean</prenom>
@@ -30,7 +30,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>23/10/2005</date>
+        <date>23-10-2005</date>
         <medecin>
             <nom>Deblouze</nom>
             <prenom>Agathe</prenom>
@@ -55,7 +55,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>3/1/2006</date>
+        <date>3-1-2006</date>
         <medecin>
             <nom>Deblouze</nom>
             <prenom>Agathe</prenom>
@@ -76,7 +76,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>13/11/2005</date>
+        <date>13-11-2005</date>
         <medecin>
             <nom>Heget</nom>
             <prenom>Yves</prenom>
@@ -97,7 +97,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>31/8/2005</date>
+        <date>31-8-2005</date>
         <medecin>
             <nom>Covert</nom>
             <prenom>Harry</prenom>
@@ -122,7 +122,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>31/8/2005</date>
+        <date>31-8-2005</date>
         <medecin>
             <nom>Foupasune</nom>
             <prenom>Jean</prenom>
@@ -163,7 +163,7 @@
         </acte>
     </ficheDeSoins>
     <ficheDeSoins>
-        <date>11/6/2020</date>
+        <date>11-6-2020</date>
         <medecin>
             <nom>Bono</nom>
             <prenom>Jean</prenom>

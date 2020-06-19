@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 import projet.ui.*; 
 
-class Test {
+class Main {
 
     public static void main(String[] args) {
         LectureXML test = new LectureXML("dossiers.xml");
