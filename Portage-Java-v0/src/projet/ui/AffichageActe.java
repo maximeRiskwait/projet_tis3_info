@@ -31,7 +31,6 @@ public class AffichageActe extends javax.swing.JFrame {
         
         this.observation.setText(a.getObservation()); 
         this.observation.setEditable(false);
-        
     }
 
     /**

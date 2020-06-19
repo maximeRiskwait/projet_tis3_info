@@ -16,7 +16,7 @@ public class Date implements Comparable {
         }
     
     public String toXml() {
-        return annee + "-" + mois + "-" + jour;
+        return jour + "-" + mois + "-" + annee;
         }
     
     public boolean equals(Object o) {

@@ -64,7 +64,7 @@ public class NouvelActe extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nom de l'acte:");
 
@@ -193,7 +193,7 @@ public class NouvelActe extends javax.swing.JFrame {
         String typeActe = (String) comboType.getSelectedItem();
         String observation = txtObs.getText();
         acte = (b) ? new Acte(code, 1, typeActe, observation) 
-                : new Acte(Code.CS, 1, "Diagnostique", observation);
+                : new Acte(Code.CS, 1, "Diagnostique", "");
         ArrayList<Acte> liste_actes = nfs.getListe_acte();
         liste_actes.add(acte);
 

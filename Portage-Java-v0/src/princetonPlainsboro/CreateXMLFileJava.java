@@ -34,10 +34,7 @@ public class CreateXMLFileJava {
             // root element
             Element root = document.createElement("dossiers");
             document.appendChild(root);
-            
 
-            
-            
             //for fiche de soins
             for (int i = 0; i < dm.getFiches().size(); i++) {
                 FicheDeSoins f = dm.getFiches().get(i);
@@ -48,10 +45,9 @@ public class CreateXMLFileJava {
 
                 // date element
                 Element date = document.createElement("date");
-                date.appendChild(document.createTextNode(f.getDate().toString()));
+                date.appendChild(document.createTextNode(f.getDate().toXml()));
                 //ficheDeSoins.appendChild(document.createTextNode("\n    "));
                 ficheDeSoins.appendChild(date);
-                
 
                 //medecin
                 Element medecin = document.createElement("medecin");
@@ -112,8 +108,7 @@ public class CreateXMLFileJava {
                 patient.appendChild(numSS);
 
                 ArrayList<Acte> actes = f.getActes();
-                
-                
+
                 for (int j = 0; j < actes.size(); j++) {
                     Acte a = actes.get(j);
                     Element acte = document.createElement("acte");
@@ -128,6 +123,21 @@ public class CreateXMLFileJava {
                     Element coef = document.createElement("coef");
                     coef.appendChild(document.createTextNode(Integer.toString(a.getCoef())));
                     acte.appendChild(coef);
+
+                    //type
+                    if (a.getType() != "") {
+                        Element type = document.createElement("type");
+                        type.appendChild(document.createTextNode(a.getType()));
+                        acte.appendChild(type);
+                    }
+
+                    //obeservation
+                    if (a.getObservation() != "") {
+                        Element obeservation = document.createElement("observation");
+                        obeservation.appendChild(document.createTextNode(a.getObservation()));
+                        acte.appendChild(obeservation);
+                    }
+
                 }
             }
 
@@ -144,9 +154,7 @@ public class CreateXMLFileJava {
             // You can use that for debugging 
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(domSource, streamResult);
-            
-            
-            
+
             System.out.println("Done creating XML File");
 
         } catch (ParserConfigurationException pce) {

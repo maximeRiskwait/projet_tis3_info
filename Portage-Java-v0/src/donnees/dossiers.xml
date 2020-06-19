@@ -11,7 +11,7 @@
 <patient>
 <nom>Track</nom>
 <prenom>Pat</prenom>
-<dateNaissance>8-7-1950</dateNaissance>
+<dateNaissance>1950-7-8</dateNaissance>
 <adresse>18 rue du pont, Grenoble</adresse>
 <numTel>0623232323</numTel>
 <numSS>150072531111426</numSS>
@@ -40,7 +40,7 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Pat</prenom>
-<dateNaissance>23-12-2000</dateNaissance>
+<dateNaissance>2000-12-23</dateNaissance>
 <adresse>1 Avenue Lafayette, Grenoble</adresse>
 <numTel>0601010101</numTel>
 <numSS>100122531111426</numSS>
@@ -65,7 +65,7 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Maggy</prenom>
-<dateNaissance>3-1-1995</dateNaissance>
+<dateNaissance>1995-1-3</dateNaissance>
 <adresse>18 chemin de sable, Grenoble</adresse>
 <numTel>0667676767</numTel>
 <numSS>195112531111426</numSS>
@@ -86,7 +86,7 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Maggy</prenom>
-<dateNaissance>18-0-1988</dateNaissance>
+<dateNaissance>1988-1-18</dateNaissance>
 <adresse>18 rue du bois, Grenoble</adresse>
 <numTel>0698989898</numTel>
 <numSS>188022531111426</numSS>
@@ -107,7 +107,7 @@
 <patient>
 <nom>Epi</nom>
 <prenom>Fanie</prenom>
-<dateNaissance>5-5-2002</dateNaissance>
+<dateNaissance>2002-5-5</dateNaissance>
 <adresse>18 Avenue des hommes, Grenoble</adresse>
 <numTel>0678674534</numTel>
 <numSS>102052531111426</numSS>
@@ -132,7 +132,7 @@
 <patient>
 <nom>Henfayitte</nom>
 <prenom>Melusine</prenom>
-<dateNaissance>1-1-1999</dateNaissance>
+<dateNaissance>1999-1-1</dateNaissance>
 <adresse>18 rue du bonheur, Grenoble</adresse>
 <numTel>0690787689</numTel>
 <numSS>199012531111426</numSS>
@@ -173,7 +173,7 @@
 <patient>
 <nom>Henfayitte</nom>
 <prenom>Melusine</prenom>
-<dateNaissance>1-1-1999</dateNaissance>
+<dateNaissance>1999-1-1</dateNaissance>
 <adresse>18 rue du bonheur, Grenoble</adresse>
 <numTel>0690787689</numTel>
 <numSS>199012531111426</numSS>
@@ -188,7 +188,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>23-2-2005</date>
+<date>2005-2-23</date>
 <medecin>
 <nom>Bono</nom>
 <prenom>Jean</prenom>
@@ -198,7 +198,7 @@
 <patient>
 <nom>Bole</nom>
 <prenom>Maggy</prenom>
-<dateNaissance>3-1-1995</dateNaissance>
+<dateNaissance>1995-1-3</dateNaissance>
 <adresse>18 chemin de sable, Grenoble</adresse>
 <numTel>0667676767</numTel>
 <numSS>195112531111426</numSS>
@@ -219,7 +219,7 @@
 <patient>
 <nom>Henfayitte</nom>
 <prenom>Melusine</prenom>
-<dateNaissance>1-1-1999</dateNaissance>
+<dateNaissance>1999-1-1</dateNaissance>
 <adresse>18 rue du bonheur, Grenoble</adresse>
 <numTel>0690787689</numTel>
 <numSS>199012531111426</numSS>
@@ -230,7 +230,7 @@
 </acte>
 </ficheDeSoins>
 <ficheDeSoins>
-<date>19-6-2020</date>
+<date>2020-6-19</date>
 <medecin>
 <nom>Bono</nom>
 <prenom>Jean</prenom>
@@ -248,10 +248,14 @@
 <acte>
 <code>KE</code>
 <coef>1</coef>
+<type>Diagnostique</type>
+<observation>La patiente ne présente aucun symptome</observation>
 </acte>
 <acte>
 <code>K</code>
 <coef>1</coef>
+<type>Thérapeutique</type>
+<observation>Rien à signaler</observation>
 </acte>
 </ficheDeSoins>
 </dossiers>

@@ -49,6 +49,8 @@ public class LectureXML {
         String specialiteCourante = "";
         Code codeCourant = null;
         int coefCourant = 0;
+        String typeCourant = null;
+        String observationCourant = null;
         
         // analyser le fichier par StAX
         try {
@@ -67,8 +69,24 @@ public class LectureXML {
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
+                        if (parser.getLocalName().equals("type")) {
+                            typeCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("observation")) {
+                            observationCourant = donneesCourantes;
+                        }
                         if (parser.getLocalName().equals("acte")) {
-                            actes.add(new Acte(codeCourant, coefCourant));
+                            if (typeCourant == null && observationCourant == null) {
+                                actes.add(new Acte(codeCourant, coefCourant));
+                            }else if (typeCourant == null){
+                                actes.add(new Acte(codeCourant, coefCourant, "", observationCourant));
+                            }else if (observationCourant == null){
+                                actes.add(new Acte(codeCourant, coefCourant, typeCourant, ""));
+                            }else{
+                                actes.add(new Acte(codeCourant, coefCourant, typeCourant, observationCourant));
+                                typeCourant = null;
+                                observationCourant = null;
+                            }
                         }                        
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = getCode(donneesCourantes);
@@ -79,9 +97,9 @@ public class LectureXML {
                             coefCourant = Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("date")) {
-                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-')+1, donneesCourantes.lastIndexOf('-')));
-                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-')+1, donneesCourantes.length()));
+                            int annee = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-')+1, donneesCourantes.length()));
                             
                             date = new Date(jour, mois, annee);
                         }
@@ -105,9 +123,9 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("dateNaissance")) {
-                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-')+1, donneesCourantes.lastIndexOf('-')));
-                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-')+1, donneesCourantes.length()));
+                            int annee= Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-')+1, donneesCourantes.length()));
                             
                             dateNaissanceCourant = new Date(jour, mois, annee);
                         }

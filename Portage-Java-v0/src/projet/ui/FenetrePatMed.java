@@ -308,10 +308,11 @@ public class FenetrePatMed extends javax.swing.JFrame {
     private void afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherActionPerformed
         DefaultTableModel model = (DefaultTableModel) tablePat.getModel();
         int selectedRowIndex = tablePat.getSelectedRow();
-
-        String numSS = model.getValueAt(selectedRowIndex, 5).toString();
-
-        new UiDMP(dm, obtenirPatient(numSS));
+        
+        if (selectedRowIndex != -1) {
+            String numSS = model.getValueAt(selectedRowIndex, 5).toString();
+            new UiDMP(dm, obtenirPatient(numSS));
+        }
     }//GEN-LAST:event_afficherActionPerformed
 
     private void tableMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedMouseClicked
@@ -345,15 +346,13 @@ public class FenetrePatMed extends javax.swing.JFrame {
             jop1.showMessageDialog(null, "Ce médecin n'existe pas !",
                     "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_rechercherbuttonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
         new Connexion("Connexion", dm);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-
 
     public Patient obtenirPatient(String numSS) {
         Patient p;
